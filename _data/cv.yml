@@ -1,11 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
 cv:
   name: Writabrata Bhattacharya
-  label: Applied Scientist
-  email: writabrata.bhattacha@inceptionai.ai
+  headline: Applied Scientist | LLMs · Speech AI · MLOps · World Models
   location: Abu Dhabi, United Arab Emirates
-  image: ""
-  summary: Applied Scientist specialising in Large Language Models, Speech Deep Learning (TTS/STT), MLOps, and classical ML, with a strong foundation in pure mathematics, stochastic processes, and statistics. Currently interested in World Models and Reinforcement Learning.
-
+  email: writabrata.bhattacha@inceptionai.ai
+  photo:
+  phone:
+  website:
   social_networks:
     - network: GitHub
       username: sudo-kaneki
@@ -13,143 +14,123 @@ cv:
       username: writabrata-bhattacharya
 
   sections:
-    Education:
+    education:
       - institution: Indian Institute of Technology Kharagpur
-        location: Kharagpur, India
-        url: https://www.iitkgp.ac.in/
         area: Business Analytics
-        studyType: Post Graduate Diploma
+        degree: PG Diploma
         start_date: 2022-08
         end_date: 2024-05
+        location: Kharagpur, India
+        summary:
         highlights:
           - "Relevant Coursework: Statistical Learning, Deep Learning, Bayesian Inference, Categorical Data Analysis"
-          - "Editor-in-Chief of the PGDBA Annual AI and Analytics Magazine (AINA 4.0)"
+          - Editor-in-Chief of the PGDBA Annual AI and Analytics Magazine (AINA 4.0), leading a team of 6
 
       - institution: Chennai Mathematical Institute
-        location: Chennai, India
-        url: https://www.cmi.ac.in/
         area: Pure Mathematics
-        studyType: Master of Science
+        degree: MSc
         start_date: 2020-08
         end_date: 2022-06
+        location: Chennai, India
+        summary:
         highlights:
           - "Relevant Coursework: Measure Theory, Stochastic Process, Operator Theory, Ergodic Theory"
           - "Thesis: Angle & Distance Estimates and Kazhdan Constants"
-          - "Full academic scholarship / tuition fee waiver"
+          - Full academic scholarship and tuition fee waiver
 
       - institution: Chennai Mathematical Institute
-        location: Chennai, India
-        url: https://www.cmi.ac.in/
         area: Mathematics and Theoretical Computer Science
-        studyType: Bachelor of Science
+        degree: BSc
         start_date: 2017-08
         end_date: 2020-06
+        location: Chennai, India
+        summary:
         highlights:
           - "Relevant Coursework: Probability, Algebra, Topology, Manifolds, Riemannian Geometry, Algorithms"
-          - "Full academic scholarship / tuition fee waiver"
+          - Full academic scholarship and tuition fee waiver
 
-    Experience:
+    experience:
       - company: Inception Institute of Artificial Intelligence
         position: Applied Scientist
-        location: Abu Dhabi, UAE
-        url: https://www.inceptionai.ae/
         start_date: 2024-07
         end_date: present
+        location: Abu Dhabi, UAE
+        summary:
         highlights:
-          - "Led the design and development of advanced Retrieval-Augmented Generation (RAG) systems for upstream operations in oil and gas, handling structured and unstructured data to deliver context-aware responses."
-          - "Optimized the RAG pipeline using Azure Document Intelligence for PDF parsing and dynamic semantic chunking, minimising context loss."
-          - "Engineered domain-specific LLMs: fine-tuned Meta's LLaMA 70B using PEFT and full fine-tuning; performed LoRA fine-tuning on Qwen3-Embedding-8B with model merging (arXiv:2601.04720) for superior domain-specific retrieval."
-          - "Established a comprehensive end-to-end evaluation framework to audit all RAG stages (OCR, chunking, retrieval accuracy, generation fidelity), enabling systematic performance tracking."
-          - "Built evaluation pipelines to benchmark state-of-the-art and open-source LLMs and embedding models on oil and gas data."
-          - "Developed a Chatbot Arena-like frontend for direct LLM comparison and executed load/stress testing for scalable production deployment."
+          - Led design and development of advanced RAG systems for upstream oil & gas operations, handling structured and unstructured data to deliver context-aware responses
+          - Optimized RAG pipeline using Azure Document Intelligence for PDF parsing and dynamic semantic chunking, minimising context loss
+          - "Fine-tuned Meta's LLaMA 70B using PEFT and full fine-tuning; performed LoRA fine-tuning on Qwen3-Embedding-8B with model merging (arXiv:2601.04720) for superior domain-specific retrieval"
+          - Built end-to-end evaluation framework auditing all RAG stages (OCR, chunking, retrieval accuracy, generation fidelity) for systematic performance tracking
+          - Benchmarked state-of-the-art and open-source LLMs and embedding models on oil & gas domain data
+          - Developed a Chatbot Arena-style frontend for direct LLM comparison and executed load/stress testing for production deployment
 
       - company: Boston Consulting Group
         position: Data Scientist Intern
-        location: Mumbai, India
-        url: https://www.bcg.com/
         start_date: 2023-10
         end_date: 2024-04
+        location: Mumbai, India
+        summary:
         highlights:
-          - "Increased call transcription accuracy by analysing audio data to identify language, informing tailored transcription and summarisation strategies."
-          - "Developed a complete audio processing pipeline using VAD for noise reduction, Mel-Spectrogram features, and a TDNN-based language identification tool."
-          - "Fine-tuned the Whisper model with hyper-parameter tuning specifically for Indian languages, significantly improving transcription fidelity."
-          - "Engineered a QA module to flag recurring lines and timestamp discrepancies; leveraged GPT-3.5 and XLM-RoBERTa for business category classification of transcripts."
+          - Increased call transcription accuracy by analysing audio to identify language and tailor transcription strategies
+          - Developed a complete audio processing pipeline using VAD for noise reduction, Mel-Spectrogram features, and a TDNN-based language identification model
+          - Fine-tuned the Whisper model with hyper-parameter tuning for Indian languages, significantly improving transcription fidelity
+          - Engineered a QA module to flag recurring lines and timestamp discrepancies; leveraged GPT-3.5 and XLM-RoBERTa for business category classification
 
-    Awards:
-      - title: INSPIRE Scholarship
+    publications:
+      - title: Assessing The Capabilities Of Large Language Models For Oil And Gas Industry Applications
         authors:
-          - "Government of India – Department of Science & Technology"
-        date: 2017
-        awarder: Government of India
-        summary: Prestigious INSPIRE Scholarship for outstanding academic performance (₹1.8L per annum for 3 years).
-
-      - title: JEE Mains – All India Rank 1018
-        authors:
-          - "National Testing Agency"
-        date: 2017
-        awarder: National Testing Agency
-        summary: Top 0.085 percentile out of 1.2 million candidates.
-
-      - title: JEE Advanced – All India Rank 1039
-        authors:
-          - "IIT Joint Admission Board"
-        date: 2017
-        awarder: IIT Joint Admission Board
-        summary: Top 0.6 percentile in JEE Advanced (2017).
-
-    Publications:
-      - title: "Assessing The Capabilities Of Large Language Models For Oil And Gas Industry Applications"
-        authors:
-          - Writabrata Bhattacharya
-        publisher: SPE Journal (SPE-229701-MS)
-        releaseDate: 2024
+          - "**W. Bhattacharya**"
+          - et al.
+        date: 2024-11
+        journal: "SPE Journal (SPE-229701-MS) — presented at ADIPEC 2024"
+        doi:
         url: https://onepetro.org/SPEADIP/proceedings/24ADIP/24ADIP/D021S033R003/579034
-        summary: Co-authored and presented at ADIPEC. Published in SPE Journal. Benchmarks LLM capabilities for domain-specific oil and gas applications.
 
-    Skills:
-      - name: Machine Learning & AI
-        level: Expert
-        icon: fa-solid fa-brain
-        keywords: "Large Language Models, RAG, Fine-tuning (LoRA/PEFT), Speech Recognition (STT), Text-to-Speech (TTS), NLP, Embeddings, Transformers"
+    awards:
+      - label: INSPIRE Scholarship
+        details: "Government of India – DST. Awarded for outstanding academic performance (₹1.8L p.a. for 3 years)."
+        date: 2017
 
-      - name: MLOps & Engineering
-        level: Expert
-        icon: fa-solid fa-gears
-        keywords: "Docker, Kubernetes, FastAPI, Databricks, Azure, vLLM, Gradio, CI/CD, Load Testing, Production Deployment"
+      - label: JEE Mains – AIR 1018
+        details: "Top 0.085 percentile out of 1.2 million candidates (2017)."
+        date: 2017
 
-      - name: Classical ML & Statistics
-        level: Expert
-        icon: fa-solid fa-chart-line
-        keywords: "Time Series Analysis, Stochastic Processes, Bayesian Inference, Statistical Learning, Measure Theory"
+      - label: JEE Advanced – AIR 1039
+        details: "Top 0.6 percentile in JEE Advanced (2017)."
+        date: 2017
 
-      - name: Programming
-        level: Expert
-        icon: fa-solid fa-code
-        keywords: "Python, R, Haskell, C++, JavaScript"
+    skills:
+      - label: Machine Learning & AI
+        details: "LLMs, RAG, Fine-tuning (LoRA/PEFT), TTS, STT, NLP, Embeddings, Transformers, Reinforcement Learning"
 
-      - name: Frameworks & Tools
-        level: Expert
-        icon: fa-solid fa-toolbox
-        keywords: "PyTorch, LangChain, Hugging Face, verl, vLLM, Gradio, Kubernetes, FastAPI, Databricks, Azure"
+      - label: MLOps & Engineering
+        details: "Docker, Kubernetes, FastAPI, Azure, Databricks, vLLM, Gradio, Load Testing, Production Deployment"
 
-    Languages:
-      - name: English
-        summary: "Fluent"
+      - label: Statistics & Mathematics
+        details: "Time Series, Stochastic Processes, Bayesian Inference, Measure Theory, Statistical Learning"
 
-      - name: Bengali
-        summary: "Native"
+      - label: Programming
+        details: "Python, R, Haskell, C++, JavaScript"
 
-      - name: Hindi
-        summary: "Fluent"
+      - label: Frameworks & Tools
+        details: "PyTorch, LangChain, Hugging Face, verl, vLLM"
 
-      - name: Spanish
-        summary: "Beginner"
+    languages:
+      - label: English
+        details: Fluent
 
-    Interests:
-      - name: Research Interests
-        icon: fa-solid fa-microscope
-        keywords: "World Models, Reinforcement Learning, LLMs, Speech AI, Game Development, Quantitative Finance"
+      - label: Bengali
+        details: Native
 
-      - name: Hobbies
-        icon: fa-solid fa-gamepad
-        keywords: "Football, Basketball, Badminton, Padel, Karting, Guitar"
+      - label: Hindi
+        details: Fluent
+
+      - label: Spanish
+        details: Beginner
+
+    interests:
+      - label: Research
+        details: "World Models, Reinforcement Learning, LLMs, Speech AI, Quantitative Finance, Game Development"
+
+      - label: Hobbies
+        details: "Football, Basketball, Badminton, Padel, Karting, Guitar"

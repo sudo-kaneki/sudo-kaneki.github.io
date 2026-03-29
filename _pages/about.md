@@ -31,6 +31,7 @@ I'm an Applied Scientist at [Inception Institute of Artificial Intelligence](htt
 My technical foundation is in **pure mathematics** — I hold an M.Sc. in Pure Mathematics from [Chennai Mathematical Institute](https://www.cmi.ac.in/) (where my thesis explored angle & distance estimates and Kazhdan constants) and a Post Graduate Diploma in Business Analytics from [IIT Kharagpur](https://www.iitkgp.ac.in/). This mathematical depth informs everything I build: from stochastic process modelling and Bayesian inference to designing evaluation frameworks for production RAG systems.
 
 **What I work on:**
+
 - **LLMs & RAG**: Designing advanced RAG systems for knowledge-intensive domains; fine-tuning LLaMA 70B and Qwen3-Embedding-8B with PEFT/LoRA; model merging for superior domain-specific retrieval.
 - **Speech AI**: Audio processing pipelines with VAD, Mel-Spectrogram features, TDNN-based language identification, and Whisper fine-tuning for low-resource Indian languages.
 - **MLOps**: End-to-end evaluation frameworks, benchmarking pipelines, load/stress testing, and scalable production deployment (Docker, Kubernetes, FastAPI, Databricks, Azure).
