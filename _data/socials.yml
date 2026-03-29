@@ -2,7 +2,8 @@
 # the socials will be displayed in the order they are defined here
 # for more information, please refer to the documentation of jekyll-socials plugin: https://github.com/george-gca/jekyll-socials
 cv_pdf: /assets/pdf/CV_Writabrata.pdf # path to your CV PDF file
-email: writabrata.bhattacha@inceptionai.ai # your email address
+email: cmi.writabrata.10@gmail.com # your email address
 github_username: sudo-kaneki # your GitHub username
 linkedin_username: writabrata-bhattacharya # your LinkedIn username (update if different)
+website: https://inceptionai.ai/ # your personal/work website
 rss_icon: true # comment this line to hide the RSS icon
