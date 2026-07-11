@@ -11,7 +11,7 @@ cv:
   name: Writabrata Bhattacharya
   headline: Applied Scientist | LLMs · Speech AI · MLOps · World Models
   location: Abu Dhabi, United Arab Emirates
-  email: cmi.writabrata.10@gmail.com
+  email: writabrata.bhattacha@inceptionai.ai
   photo:
   phone: tel:+971-54-521-5572
   website:
@@ -117,6 +117,10 @@ cv:
         url: https://onepetro.org/SPEADIP/proceedings/24ADIP/24ADIP/D021S033R003/579034
 
     awards:
+      - label: Olympiads – INMO, INPhO, INAO
+        details: "Selected among India's top 30 students in the Mathematics (INMO), Physics (INPhO), and Astronomy (INAO) Olympiads; advanced to the national training camp at HBCSE, TIFR."
+        date: 2016
+
       - label: INSPIRE Scholarship
         details: "Government of India – DST. Awarded for outstanding academic performance (₹1.8L p.a. for 3 years)."
         date: 2017
@@ -127,6 +131,19 @@ cv:
 
       - label: JEE Advanced – AIR 1039
         details: "Top 0.6 percentile in JEE Advanced (2017)."
+        date: 2017
+
+      - label: CMI Full Scholarship
+        details: "Full academic scholarship and tuition fee waiver for both the B.Sc. and the M.Sc., awarded by Chennai Mathematical Institute."
+        date: 2017
+
+    leadership:
+      - label: Editor-in-Chief – AINA 4.0
+        details: "PGDBA Annual AI and Analytics Magazine. Led a team of 6; featured an interview with Dr. Josh Starmer (StatQuest)."
+        date: 2023
+
+      - label: Olympiad Mentor – Cheenta Ganit Kendra
+        details: "Mentored Mathematics and Physics Olympiad aspirants for four years (2017–2021)."
         date: 2017
 
     skills:

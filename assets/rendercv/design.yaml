@@ -5,3 +5,8 @@ design:
     size: a4
     show_footer: false
     show_top_note: false
+  header:
+    connections:
+      # Default is "national", which renders +971 54 521 5572 as "054 521 5572"
+      # — it drops the country code, which is wrong on a CV read abroad.
+      phone_number_format: international
