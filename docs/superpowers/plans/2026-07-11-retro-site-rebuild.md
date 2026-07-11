@@ -139,7 +139,16 @@ collections:
     output: true
 ```
 
-Then find the `defaults:` block (around line 234) and delete any `scope:` entry whose `type:` is `books`, `news`, `projects`, or `teachings`. Leave `posts` and `pages` scopes intact.
+Next, the `jekyll-archives:` block (around line 247) has a `books:` sub-key naming the collection you just deleted. `jekyll-archives-v2` will crash on it with `NoMethodError: undefined method 'docs' for nil` — a far less obvious error than `Unknown collection`. Delete these two lines:
+
+```yaml
+books:
+  enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
+```
+
+Leave the `posts:` sub-key of `jekyll-archives:` alone.
+
+(The `defaults:` block scopes only by `path`, not by `type`, so it needs no edit. The `- projects` at line ~648 belongs to the unrelated `jsonresume:` list — leave it.)
 
 Finally, disable pagination. At line 99 the file reads:
 
@@ -156,6 +165,26 @@ pagination:
 ```
 
 Without this, the build aborts: `jekyll-paginate-v2` is enabled but `_posts/` is now empty.
+
+<!-- prettier-ignore -->
+- [ ] **Step 3b: Repair the pre-existing build failure in `_data/socials.yml`**
+
+**The build is already red at HEAD, before this rebuild touches anything.** Commit `9419b99` added `website: https://inceptionai.ai/` to `_data/socials.yml`. `jekyll-socials` does not recognise `website` as a built-in key, so it treats the value as a custom social entry, expects a hash with a `logo` field, gets a `String`, and dies:
+
+```
+Liquid Exception: undefined method 'split' for nil in /srv/jekyll/_layouts/about.liquid
+jekyll-socials-0.0.6/lib/jekyll-socials.rb:210
+```
+
+Proven by isolation: deleting only this line takes the build from that exception to `done in 5.8 seconds`. GitHub Pages has been serving a stale build since `9419b99`.
+
+Delete the line from `_data/socials.yml`:
+
+```yaml
+website: https://inceptionai.ai/ # your personal/work website
+```
+
+This loses nothing. `jekyll-socials` is culled entirely in Task 7, and **Task 7 Step 5b re-adds `website:` and surfaces it in the new footer**, where it will actually render. Do not attempt to make `jekyll-socials` accept the key — the plugin is being deleted.
 
 <!-- prettier-ignore -->
 - [ ] **Step 4: Verify the build is green**
@@ -1615,7 +1644,7 @@ title: blog
 
 An empty blog cannot demonstrate that filtering, MathJax, or syntax highlighting work. Write the post with this heredoc exactly as given — it contains a fenced code block, so transcribing it by hand into an editor is error-prone:
 
-```bash
+````bash
 cat > _posts/2026-07-11-hello.md <<'POST'
 ---
 layout: article
@@ -1629,9 +1658,11 @@ First post. Inline math renders: $e^{i\pi} + 1 = 0$.
 
 ```python
 print("code renders too")
-```
+````
+
 POST
-```
+
+````
 
 This post is a real post and stays in the repo — it exercises the `article` layout, the category filter, MathJax, and Rouge. Delete it whenever you write a real first post.
 
@@ -1640,7 +1671,7 @@ This post is a real post and stays in the repo — it exercises the `article` la
 
 ```bash
 docker compose run --rm jekyll bundle exec jekyll build --trace
-```
+````
 
 CV must render every section from `cv.yml`, and point at the RenderCV PDF (not the deleted one):
 
@@ -2053,6 +2084,32 @@ and reduce the `Install and Build 🔧` step to:
 (dropping `apt-get install imagemagick`, which served `jekyll-imagemagick`, and `pip3 install nbconvert`).
 
 Removing purgecss is not merely cleanup. It strips CSS classes it cannot find referenced in the HTML — and `theme-toggle.js` and `blog-filter.js` apply classes that exist **only in JS**. Left in place, it would produce a site that works locally and breaks in production.
+
+<!-- prettier-ignore -->
+- [ ] **Step 5b: Restore the website link, now that `jekyll-socials` is gone**
+
+Task 1 deleted `website:` from `_data/socials.yml` because `jekyll-socials` crashed on it. That plugin no longer exists, so the key is safe again and nothing parses `socials.yml` except our own templates.
+
+Add it back to `_data/socials.yml`:
+
+```yaml
+website: https://inceptionai.ai/
+```
+
+Then surface it in `_includes/site-footer.liquid`, in the `.footer__links` span, after the linkedin link:
+
+```liquid
+<a href="{{ site.data.socials.website }}">website</a>
+```
+
+Verify it renders:
+
+```bash
+docker compose run --rm jekyll bundle exec jekyll build --trace
+grep -q 'inceptionai.ai' _site/index.html && echo "OK: website link restored in footer"
+```
+
+Expected: one `OK:` line.
 
 <!-- prettier-ignore -->
 - [ ] **Step 6: Delete purgecss and the dead workflows**

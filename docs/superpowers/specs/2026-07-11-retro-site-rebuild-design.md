@@ -10,11 +10,11 @@ The site is a near-stock [al-folio](https://github.com/alshedivat/al-folio) Jeky
 
 An audit of the content found that **almost all of it is demo boilerplate**. The site's only real content is four assets:
 
-| Asset               | Status                                                       |
-| ------------------- | ------------------------------------------------------------ |
-| `_pages/about.md`   | Real — hand-written bio prose                                |
-| `_data/cv.yml`      | Real — full CV in RenderCV v2.8 schema                       |
-| `_data/socials.yml` | Real — email, GitHub, LinkedIn                               |
+| Asset                      | Status                                                     |
+| -------------------------- | ---------------------------------------------------------- |
+| `_pages/about.md`          | Real — hand-written bio prose                              |
+| `_data/cv.yml`             | Real — full CV in RenderCV v2.8 schema                     |
+| `_data/socials.yml`        | Real — email, GitHub, LinkedIn                             |
 | `_bibliography/papers.bib` | Real — one paper (ADIPEC/SPE 2024), duplicated in `cv.yml` |
 
 Everything else — 21 blog posts, 9 projects, the bookshelf, 2 teaching entries, 4 news announcements — ships with the template.
@@ -40,16 +40,16 @@ Rebuild the site as a **narrative personal site with a retro-modern visual ident
 
 Each decision below was chosen against at least one considered alternative.
 
-| # | Decision | Rejected alternative | Why |
-|---|---|---|---|
-| D1 | **Full rebuild** of the presentation layer | Restyle within al-folio; reskin over Bootstrap | Overriding Bootstrap means permanent `!important` wars and ~200KB of unused CSS. The template-isms leak at the edges regardless. |
-| D2 | **Keep Jekyll, the `cv.yml` pipeline, and the deploy.** Delete Bootstrap, all al-folio SCSS, all al-folio layouts. | Fresh bare Jekyll site | A bare site means rebuilding dark mode, SEO, RSS, syntax highlighting, and the deploy by hand — to arrive at the same place. |
-| D3 | **Retro-modern hybrid** aesthetic | Full terminal/CRT; terminal home + clean rest | A CRT costume fights readability on exactly the pages that must stay readable (CV, publications). Retro *hardware cues* — hard edges, offset shadows, key-press hovers — carry the personality without the cost. |
-| D4 | **Dark default, light mode fully supported** | Dark-only | Light mode is a real, tested theme, not an afterthought. |
-| D5 | **CV rendered from `cv.yml` to HTML**, with a download button | Embed/preview the PDF | See §4.1. |
-| D6 | **Publications merged into `/cv/`** as a section; **`cv.yml` is the only source**. Delete `papers.bib` and `jekyll-scholar`. | Keep `papers.bib` + `jekyll-scholar` | See §4.2. |
-| D7 | **Projects as `_data/projects.yml`**, not a Jekyll collection | `_projects/` collection | A collection demands a page per project. Cards + "deep writeups become blog posts" is one content system fewer and degrades gracefully. |
-| D8 | **One `/blog/` with client-side category filter tabs** | Two routes (`/blog/` + `/reading/`) | Hard-splitting routes creates a filing dilemma for hybrid posts and adds a fifth nav item. Tabs give separation without forcing a taxonomy decision on every post. |
+| #   | Decision                                                                                                                     | Rejected alternative                           | Why                                                                                                                                                                                                              |
+| --- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| D1  | **Full rebuild** of the presentation layer                                                                                   | Restyle within al-folio; reskin over Bootstrap | Overriding Bootstrap means permanent `!important` wars and ~200KB of unused CSS. The template-isms leak at the edges regardless.                                                                                 |
+| D2  | **Keep Jekyll, the `cv.yml` pipeline, and the deploy.** Delete Bootstrap, all al-folio SCSS, all al-folio layouts.           | Fresh bare Jekyll site                         | A bare site means rebuilding dark mode, SEO, RSS, syntax highlighting, and the deploy by hand — to arrive at the same place.                                                                                     |
+| D3  | **Retro-modern hybrid** aesthetic                                                                                            | Full terminal/CRT; terminal home + clean rest  | A CRT costume fights readability on exactly the pages that must stay readable (CV, publications). Retro _hardware cues_ — hard edges, offset shadows, key-press hovers — carry the personality without the cost. |
+| D4  | **Dark default, light mode fully supported**                                                                                 | Dark-only                                      | Light mode is a real, tested theme, not an afterthought.                                                                                                                                                         |
+| D5  | **CV rendered from `cv.yml` to HTML**, with a download button                                                                | Embed/preview the PDF                          | See §4.1.                                                                                                                                                                                                        |
+| D6  | **Publications merged into `/cv/`** as a section; **`cv.yml` is the only source**. Delete `papers.bib` and `jekyll-scholar`. | Keep `papers.bib` + `jekyll-scholar`           | See §4.2.                                                                                                                                                                                                        |
+| D7  | **Projects as `_data/projects.yml`**, not a Jekyll collection                                                                | `_projects/` collection                        | A collection demands a page per project. Cards + "deep writeups become blog posts" is one content system fewer and degrades gracefully.                                                                          |
+| D8  | **One `/blog/` with client-side category filter tabs**                                                                       | Two routes (`/blog/` + `/reading/`)            | Hard-splitting routes creates a filing dilemma for hybrid posts and adds a fifth nav item. Tabs give separation without forcing a taxonomy decision on every post.                                               |
 
 ### 4.1 Why the CV is rendered, not embedded
 
@@ -71,12 +71,12 @@ Cost: no BibTeX-copy button, no abstract toggle. For one publication this is ove
 
 Four routes, down from eleven.
 
-| Route           | Source of truth                 | Notes                                                        |
-| --------------- | ------------------------------- | ------------------------------------------------------------ |
-| `/`             | `_pages/home.md` + `_data/cv.yml` + `_data/projects.yml` | Narrative single-scroll. Timeline generated from `cv.yml`.   |
-| `/cv/`          | `_data/cv.yml`                  | Experience, education, publications, awards, skills, languages, interests. Download-PDF button. |
-| `/projects/`    | `_data/projects.yml`            | Side projects outside work. Card grid.                       |
-| `/blog/`        | `_posts/`                       | Starts empty. Category filter tabs. MathJax + Rouge on posts. |
+| Route        | Source of truth                                          | Notes                                                                                           |
+| ------------ | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `/`          | `_pages/home.md` + `_data/cv.yml` + `_data/projects.yml` | Narrative single-scroll. Timeline generated from `cv.yml`.                                      |
+| `/cv/`       | `_data/cv.yml`                                           | Experience, education, publications, awards, skills, languages, interests. Download-PDF button. |
+| `/projects/` | `_data/projects.yml`                                     | Side projects outside work. Card grid.                                                          |
+| `/blog/`     | `_posts/`                                                | Starts empty. Category filter tabs. MathJax + Rouge on posts.                                   |
 
 Nav: `home · cv · projects · blog` plus a theme toggle.
 
@@ -179,13 +179,13 @@ Filtering is **client-side over the already-rendered list** — no page reloads,
 
 The workflow gets **shorter**, because three build steps exist only to serve deleted things:
 
-| Step                        | Fate   | Reason                                                  |
-| --------------------------- | ------ | ------------------------------------------------------- |
-| `apt-get install imagemagick` | Remove | Only needed by `jekyll-imagemagick`.                     |
-| `Setup Python 🐍` + `pip3 install nbconvert` | Remove | Only needed by `jekyll-jupyter-notebook`.                |
-| `Update _config.yml` (giscus) | Remove | Giscus is dropped; it was never configured.              |
-| `Purge unused CSS 🧹`        | Remove | Pointless against ~600 lines of owned CSS — **and actively dangerous**: purgecss strips classes it cannot see in the HTML, which would silently eat the theme-toggle and blog-filter classes that exist only in JS. |
-| `Deploy 🚀`                  | **Keep, unchanged** |                                              |
+| Step                                         | Fate                | Reason                                                                                                                                                                                                              |
+| -------------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `apt-get install imagemagick`                | Remove              | Only needed by `jekyll-imagemagick`.                                                                                                                                                                                |
+| `Setup Python 🐍` + `pip3 install nbconvert` | Remove              | Only needed by `jekyll-jupyter-notebook`.                                                                                                                                                                           |
+| `Update _config.yml` (giscus)                | Remove              | Giscus is dropped; it was never configured.                                                                                                                                                                         |
+| `Purge unused CSS 🧹`                        | Remove              | Pointless against ~600 lines of owned CSS — **and actively dangerous**: purgecss strips classes it cannot see in the HTML, which would silently eat the theme-toggle and blog-filter classes that exist only in JS. |
+| `Deploy 🚀`                                  | **Keep, unchanged** |                                                                                                                                                                                                                     |
 
 `purgecss.config.js` is deleted.
 
