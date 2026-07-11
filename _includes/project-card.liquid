@@ -1,16 +1,26 @@
+{% comment %}
+  Expects: project — a single entry from _data/projects.yml.
+  Read it via include.project, not a bare `project`: Jekyll leaks the
+  caller's scope into includes, so a bare name silently resolves to the
+  caller's loop variable instead of the parameter actually passed. Rename
+  the loop variable and every card would render blank with no error.
+{% endcomment %}
+
+{% assign p = include.project %}
+
 <article class="card">
-  <h3>{{ project.title }}</h3>
-  <p>{{ project.blurb }}</p>
-  {% if project.tags %}
+  <h3>{{ p.title }}</h3>
+  <p>{{ p.blurb }}</p>
+  {% if p.tags %}
     <p>
-      {% for tag in project.tags -%}
+      {% for tag in p.tags -%}
         <span class="tag">{{ tag }}</span>
       {%- endfor %}
     </p>
   {% endif %}
-  {% if project.links %}
+  {% if p.links %}
     <p>
-      {% for link in project.links %}
+      {% for link in p.links %}
         <a href="{{ link.url }}">{{ link.label }}</a>
         {%- unless forloop.last %} · {% endunless %}
       {% endfor %}
