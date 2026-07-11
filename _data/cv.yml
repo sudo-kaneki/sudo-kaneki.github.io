@@ -85,6 +85,28 @@ cv:
           - Engineered a QA module to flag recurring lines and timestamp discrepancies; leveraged GPT-3.5 and XLM-RoBERTa for business category classification
 
     publications:
+      - title: "PETRA: Transforming Web Text for Petroleum-Engineering Domain Adaptation"
+        authors:
+          - K. Dubovikov
+          - O. El Mansouri
+          - H. Madmoun
+          - Y. Li
+          - S. Kumar
+          - A. El Mir
+          - S. Ghosh
+          - "**W. Bhattacharya**"
+          - A. Garcia-Garcia
+          - O. Pandit
+          - S. K. Sahu
+          - F. Castanedo
+          - L. Murray
+          - M. Takac
+          - S. Lahlou
+        date: 2026-06
+        journal: "arXiv preprint (arXiv:2606.24346)"
+        doi:
+        url: https://arxiv.org/abs/2606.24346
+
       - title: Assessing The Capabilities Of Large Language Models For Oil And Gas Industry Applications
         authors:
           - "**W. Bhattacharya**"
