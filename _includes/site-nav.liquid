@@ -1,0 +1,19 @@
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="{{ '/' | relative_url }}">
+      {{- site.first_name | slice: 0, 1 -}}
+      {{- site.last_name | slice: 0, 1 -}}
+    </a>
+
+    <nav class="nav__links" aria-label="Main">
+      <a href="{{ '/' | relative_url }}">home</a>
+      <a href="{{ '/cv/' | relative_url }}">cv</a>
+      <a href="{{ '/projects/' | relative_url }}">projects</a>
+      <a href="{{ '/blog/' | relative_url }}">blog</a>
+    </nav>
+
+    <button id="theme-toggle" class="nav__toggle" type="button" aria-label="Toggle light and dark theme"></button>
+  </div>
+</header>

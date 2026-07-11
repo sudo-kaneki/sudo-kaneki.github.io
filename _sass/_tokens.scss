@@ -1,0 +1,155 @@
+/* Breakpoint. Must be a Sass variable, not a CSS custom property:
+   var() is not permitted inside a @media condition. */
+$bp-sm: 640px;
+
+/* =============================================================
+   DESIGN TOKENS — the only file permitted to contain literal
+   colours, sizes, or font names. Everything else uses var().
+   ============================================================= */
+
+:root {
+  /* ---- Typography -------------------------------------------
+     THE FONT SWAP HAPPENS HERE. To adopt a pixel/bitmap face,
+     change --font-display (and optionally --font-body) and add
+     the @font-face / <link> in _includes/site-head.liquid.
+     Nothing else in the codebase needs to change.
+     --------------------------------------------------------- */
+  --font-display: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-body: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.5rem;
+  --fs-3xl: 3.5rem;
+
+  --lh-tight: 1.25;
+  --lh-base: 1.7;
+  --tracking-tight: -0.01em;
+  --fw-display: 700;
+
+  /* ---- Column widths (must clear the widest glyph, not "0") ---- */
+  --ch-year: 5ch;
+  --ch-date: 11ch;
+
+  /* ---- Spacing (4px base) ---------------------------------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-6: 1.5rem;
+  --sp-8: 2rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-24: 6rem;
+
+  /* ---- Retro hardware cues --------------------------------- */
+  --radius: 0; /* never anything else */
+  --bw: 1px;
+  --shadow: 4px 4px 0 var(--border);
+  --shadow-sm: 2px 2px 0 var(--border);
+
+  /* ---- Interaction geometry --------------------------------- */
+  --press: 2px; /* hover: how far a key depresses */
+  --press-deep: 4px; /* active: fully pressed */
+  --dot: 7px; /* timeline marker */
+
+  /* ---- Focus & text detail ---------------------------------- */
+  --focus-width: 2px;
+  --focus-offset: 2px;
+  --underline-offset: 3px;
+  --offscreen: -9999px;
+
+  /* ---- Layout ---------------------------------------------- */
+  --w-content: 720px;
+  --w-wide: 960px;
+
+  /* ---- Motion ---------------------------------------------- */
+  --t: 120ms ease-out;
+}
+
+/* ---- Dark theme (DEFAULT) ---------------------------------- */
+:root,
+:root[data-theme="dark"] {
+  --bg: #0b0d0c;
+  --surface: #121614;
+  --fg: #e6e8e6;
+  --fg-muted: #9aa39d;
+  --border: #2c332e;
+  --accent: #5ee2a0; /* phosphor green, desaturated for AA */
+  --accent-strong: #7dffb8;
+  --accent-ink: #0b0d0c; /* text ON an accent background */
+
+  /* ---- Syntax (Rouge) --------------------------------------- */
+  --syn-comment: #7d887f; /* bumped from #6f7a72 (4.09:1) to clear AA on --surface */
+  --syn-keyword: #7dffb8;
+  --syn-string: #d3b58d;
+  --syn-number: #c9a0ff;
+  --syn-func: #8fd3ff;
+  --syn-name: #e6e8e6;
+  --syn-punct: #9aa39d;
+  --syn-error: #ff8a80;
+}
+
+/* ---- Light theme ------------------------------------------- */
+:root[data-theme="light"] {
+  --bg: #f4f3ee;
+  --surface: #ffffff;
+  --fg: #16191a;
+  --fg-muted: #5b6360;
+  --border: #d4d3cc;
+  --accent: #0f7a4d;
+  --accent-strong: #0a5c3a;
+  --accent-ink: #ffffff;
+
+  /* ---- Syntax (Rouge) --------------------------------------- */
+  --syn-comment: #6b7280;
+  --syn-keyword: #0a5c3a;
+  --syn-string: #9a5b13;
+  --syn-number: #6b21a8;
+  --syn-func: #0b5f8a;
+  --syn-name: #16191a;
+  --syn-punct: #5b6360;
+  --syn-error: #b3261e;
+}
+
+/* Contrast ratios, computed from the hex values above via the WCAG
+   relative-luminance formula. AA body text requires 4.5:1.
+     dark  — fg 15.83:1, fg-muted 7.52:1, accent 11.94:1
+     light — fg 15.91:1, fg-muted 5.56:1, accent  4.83:1
+     accent-ink on accent — dark 11.94:1, light 5.37:1
+   The light accent (#0f7a4d on #f4f3ee) is the tightest pair, clearing
+   AA by only 0.33. Re-check it if you change the light palette.       */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t: 0ms;
+  }
+}
+
+/* No-JS fallback: honour the OS preference, matching what the inline
+   head script does. An explicit [data-theme] always wins over this. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg: #f4f3ee;
+    --surface: #ffffff;
+    --fg: #16191a;
+    --fg-muted: #5b6360;
+    --border: #d4d3cc;
+    --accent: #0f7a4d;
+    --accent-strong: #0a5c3a;
+    --accent-ink: #ffffff;
+
+    /* ---- Syntax (Rouge) --------------------------------------- */
+    --syn-comment: #6b7280;
+    --syn-keyword: #0a5c3a;
+    --syn-string: #9a5b13;
+    --syn-number: #6b21a8;
+    --syn-func: #0b5f8a;
+    --syn-name: #16191a;
+    --syn-punct: #5b6360;
+    --syn-error: #b3261e;
+  }
+}

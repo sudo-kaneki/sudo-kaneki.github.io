@@ -1,19 +1,54 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+# Single source of truth for three outputs:
+#   1. the /cv/ page          (_pages/cv.md)
+#   2. the homepage timeline  (_includes/timeline.liquid)
+#   3. the CV PDF             (.github/workflows/render-cv.yml → RenderCV)
+# Never duplicate career history anywhere else — edit it here and all three follow.
+#
+# Dates: prefer zero-padded YYYY-MM (e.g. 2024-07). The timeline normalizes
+# unpadded and year-only dates, but RenderCV's schema is stricter than we are.
 cv:
   name: Writabrata Bhattacharya
   headline: Applied Scientist | LLMs · Speech AI · MLOps · World Models
   location: Abu Dhabi, United Arab Emirates
-  email: cmi.writabrata.10@gmail.com
+  email: writabrata.bhattacha@inceptionai.ai
   photo:
-  phone:
+  phone: tel:+971-54-521-5572
   website:
   social_networks:
     - network: GitHub
       username: sudo-kaneki
     - network: LinkedIn
-      username: writabrata-bhattacharya
+      username: writabrata-bhattacharya-2b05b715a
 
   sections:
+    experience:
+      - company: Inception Institute of Artificial Intelligence
+        position: Applied Scientist
+        start_date: 2024-07
+        end_date: present
+        location: Abu Dhabi, UAE
+        summary:
+        highlights:
+          - Led design and development of advanced RAG systems for upstream oil & gas operations, handling structured and unstructured data to deliver context-aware responses
+          - Optimized RAG pipeline using Azure Document Intelligence for PDF parsing and dynamic semantic chunking, minimising context loss
+          - "Fine-tuned Meta's LLaMA 70B using PEFT and full fine-tuning; performed LoRA fine-tuning on Qwen3-Embedding-8B with model merging (arXiv:2601.04720) for superior domain-specific retrieval"
+          - Built end-to-end evaluation framework auditing all RAG stages (OCR, chunking, retrieval accuracy, generation fidelity) for systematic performance tracking
+          - Benchmarked state-of-the-art and open-source LLMs and embedding models on oil & gas domain data
+          - Developed a Chatbot Arena-style frontend for direct LLM comparison and executed load/stress testing for production deployment
+
+      - company: Boston Consulting Group
+        position: Data Scientist Intern
+        start_date: 2023-10
+        end_date: 2024-04
+        location: Mumbai, India
+        summary:
+        highlights:
+          - Increased call transcription accuracy by analysing audio to identify language and tailor transcription strategies
+          - Developed a complete audio processing pipeline using VAD for noise reduction, Mel-Spectrogram features, and a TDNN-based language identification model
+          - Fine-tuned the Whisper model with hyper-parameter tuning for Indian languages, significantly improving transcription fidelity
+          - Engineered a QA module to flag recurring lines and timestamp discrepancies; leveraged GPT-3.5 and XLM-RoBERTa for business category classification
+
     education:
       - institution: Indian Institute of Technology Kharagpur
         area: Business Analytics
@@ -49,34 +84,29 @@ cv:
           - "Relevant Coursework: Probability, Algebra, Topology, Manifolds, Riemannian Geometry, Algorithms"
           - Full academic scholarship and tuition fee waiver
 
-    experience:
-      - company: Inception Institute of Artificial Intelligence
-        position: Applied Scientist
-        start_date: 2024-07
-        end_date: present
-        location: Abu Dhabi, UAE
-        summary:
-        highlights:
-          - Led design and development of advanced RAG systems for upstream oil & gas operations, handling structured and unstructured data to deliver context-aware responses
-          - Optimized RAG pipeline using Azure Document Intelligence for PDF parsing and dynamic semantic chunking, minimising context loss
-          - "Fine-tuned Meta's LLaMA 70B using PEFT and full fine-tuning; performed LoRA fine-tuning on Qwen3-Embedding-8B with model merging (arXiv:2601.04720) for superior domain-specific retrieval"
-          - Built end-to-end evaluation framework auditing all RAG stages (OCR, chunking, retrieval accuracy, generation fidelity) for systematic performance tracking
-          - Benchmarked state-of-the-art and open-source LLMs and embedding models on oil & gas domain data
-          - Developed a Chatbot Arena-style frontend for direct LLM comparison and executed load/stress testing for production deployment
-
-      - company: Boston Consulting Group
-        position: Data Scientist Intern
-        start_date: 2023-10
-        end_date: 2024-04
-        location: Mumbai, India
-        summary:
-        highlights:
-          - Increased call transcription accuracy by analysing audio to identify language and tailor transcription strategies
-          - Developed a complete audio processing pipeline using VAD for noise reduction, Mel-Spectrogram features, and a TDNN-based language identification model
-          - Fine-tuned the Whisper model with hyper-parameter tuning for Indian languages, significantly improving transcription fidelity
-          - Engineered a QA module to flag recurring lines and timestamp discrepancies; leveraged GPT-3.5 and XLM-RoBERTa for business category classification
-
     publications:
+      - title: "PETRA: Transforming Web Text for Petroleum-Engineering Domain Adaptation"
+        authors:
+          - K. Dubovikov
+          - O. El Mansouri
+          - H. Madmoun
+          - Y. Li
+          - S. Kumar
+          - A. El Mir
+          - S. Ghosh
+          - "**W. Bhattacharya**"
+          - A. Garcia-Garcia
+          - O. Pandit
+          - S. K. Sahu
+          - F. Castanedo
+          - L. Murray
+          - M. Takac
+          - S. Lahlou
+        date: 2026-06
+        journal: "arXiv preprint (arXiv:2606.24346)"
+        doi:
+        url: https://arxiv.org/abs/2606.24346
+
       - title: Assessing The Capabilities Of Large Language Models For Oil And Gas Industry Applications
         authors:
           - "**W. Bhattacharya**"
@@ -87,6 +117,10 @@ cv:
         url: https://onepetro.org/SPEADIP/proceedings/24ADIP/24ADIP/D021S033R003/579034
 
     awards:
+      - label: Olympiads – INMO, INPhO, INAO
+        details: "Selected among India's top 30 students in the Mathematics (INMO), Physics (INPhO), and Astronomy (INAO) Olympiads; advanced to the national training camp at HBCSE, TIFR."
+        date: 2016
+
       - label: INSPIRE Scholarship
         details: "Government of India – DST. Awarded for outstanding academic performance (₹1.8L p.a. for 3 years)."
         date: 2017
@@ -97,6 +131,19 @@ cv:
 
       - label: JEE Advanced – AIR 1039
         details: "Top 0.6 percentile in JEE Advanced (2017)."
+        date: 2017
+
+      - label: CMI Full Scholarship
+        details: "Full academic scholarship and tuition fee waiver for both the B.Sc. and the M.Sc., awarded by Chennai Mathematical Institute."
+        date: 2017
+
+    leadership:
+      - label: Editor-in-Chief – AINA 4.0
+        details: "PGDBA Annual AI and Analytics Magazine. Led a team of 6; featured an interview with Dr. Josh Starmer (StatQuest)."
+        date: 2023
+
+      - label: Olympiad Mentor – Cheenta Ganit Kendra
+        details: "Mentored Mathematics and Physics Olympiad aspirants for four years (2017–2021)."
         date: 2017
 
     skills:

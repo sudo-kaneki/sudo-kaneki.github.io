@@ -42,7 +42,17 @@ jobs:
             echo "Missing RenderCV config file!"
             exit 1
           fi
-          rendercv render $cv_file --settings $settings
+          design=$(find $rendercv_dir -maxdepth 1 -type f \( -name "design.yaml" -o -name "design.yml" \))
+          locale=$(find $rendercv_dir -maxdepth 1 -type f \( -name "locale.yaml" -o -name "locale.yml" \))
+          # --design and --locale-catalog MUST be passed explicitly. settings.yaml
+          # declares render_command.design / .locale, but rendercv silently ignores
+          # them: a bogus key in design.yaml raises no error and the file's settings
+          # never take effect. Without these flags design.yaml is dead config, and
+          # the phone number renders in "national" format (dropping +971).
+          rendercv render "$cv_file" \
+            --design "$design" \
+            --locale-catalog "$locale" \
+            --settings "$settings"
           rm assets/rendercv/rendercv_output/*.typ
       - name: Upload rendercv_output as an artifact
         uses: actions/upload-artifact@v4
@@ -54,5 +64,5 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git add -A
-          git commit -m "chore: render the latest CV"
+          git commit -m "chore: render the latest CV" || echo "No changes to commit"
           git push

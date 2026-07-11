@@ -1,0 +1,12 @@
+# Side projects, outside of work.
+#
+# Schema:
+#   - title: string        (required)
+#     blurb: string        (required, one line)
+#     tags: [string]       (optional — tech used)
+#     featured: bool       (optional — true also surfaces it on the homepage)
+#     links:               (optional)
+#       - label: string
+#         url: string
+#
+# Deep write-ups belong in _posts/ — link to them from `links`.
