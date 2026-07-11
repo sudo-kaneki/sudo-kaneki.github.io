@@ -2016,12 +2016,22 @@ group :jekyll_plugins do
     gem 'jekyll-minifier'
     gem 'jekyll-paginate-v2'
     gem 'jekyll-sitemap'
-    gem 'jekyll-terser', :git => "https://github.com/RobertoJBeltran/jekyll-terser.git"
     gem 'jemoji'
 end
 ```
 
-Dropped: `jekyll-3rd-party-libraries`, `jekyll-archives-v2`, `jekyll-cache-bust`, `jekyll-get-json`, `jekyll-imagemagick`, `jekyll-jupyter-notebook`, `jekyll-regex-replace`, `jekyll-scholar`, `jekyll-tabs`, `jekyll-toc`, `jekyll-twitter-plugin`, `classifier-reborn`, and the entire `:other_plugins` group (`css_parser`, `feedjira`, `httparty`, `observer`, `ostruct`).
+Dropped: `jekyll-3rd-party-libraries`, `jekyll-archives-v2`, `jekyll-cache-bust`, `jekyll-get-json`, `jekyll-imagemagick`, `jekyll-jupyter-notebook`, `jekyll-regex-replace`, `jekyll-scholar`, `jekyll-socials`, `jekyll-tabs`, `jekyll-terser`, `jekyll-toc`, `jekyll-twitter-plugin`, `classifier-reborn`, and the entire `:other_plugins` group (`css_parser`, `feedjira`, `httparty`, `observer`, `ostruct`).
+
+**`jekyll-terser` is dropped, and that is deliberate — it is the single most destructive dependency in this repo.** It is sourced from a **git URL**, not RubyGems. Git-sourced gems are not baked into the `amirpourmand/al-folio` Docker image, so any command that re-resolves the bundle fails with a misleading `Bundler::GitError: The git source … is not yet checked out`. This is what makes `docker compose up --build` — the command `AGENTS.md` itself documents — **break the dev environment**, and recovering requires extracting the image's own `Gemfile.lock` from inside the container. It buys nothing: it minifies JavaScript, the site ships ~40 lines of JS total, and `jekyll-minifier` (retained) already compresses JS via `compress_javascript: true`.
+
+`jekyll-socials` is also dropped. It is the plugin that crashed on the `website:` key in `_data/socials.yml` (see Task 1 Step 3b); with it gone, nothing but our own templates reads that file.
+
+<!-- prettier-ignore -->
+- [ ] **Step 1b: Stop gitignoring `Gemfile.lock`**
+
+`.gitignore:13` ignores `Gemfile.lock`. That is correct for a _theme_ (al-folio is one) and wrong for a _site_ (this is one). An unlocked bundle means the Docker image, CI, and your laptop can each resolve different gem versions — and a stray `bundle install` silently rewrites the lock to versions the image does not have, producing `Bundler::GemNotFound` with no obvious cause. Because the file is ignored, `git checkout` cannot even undo it.
+
+Remove line 13 (`Gemfile.lock`) from `.gitignore`, and commit the lockfile.
 
 <!-- prettier-ignore -->
 - [ ] **Step 2: Regenerate the lockfile inside the container**
