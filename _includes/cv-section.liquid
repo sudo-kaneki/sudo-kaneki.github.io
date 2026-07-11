@@ -5,10 +5,7 @@
         <span class="cv-entry__title">{{ entry.position }} · {{ entry.company }}</span>
         <span class="cv-entry__when">{{ entry.start_date }} — {{ entry.end_date }}</span>
       {% elsif entry.institution %}
-        <span class="cv-entry__title">
-          {{- entry.degree }}
-          {{ entry.area }} · {{ entry.institution -}}
-        </span>
+        <span class="cv-entry__title">{{- entry.degree }}, {{ entry.area }} · {{ entry.institution -}}</span>
         <span class="cv-entry__when">{{ entry.start_date }} — {{ entry.end_date }}</span>
       {% elsif entry.authors %}
         <span class="cv-entry__title">

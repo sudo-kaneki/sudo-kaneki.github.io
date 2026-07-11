@@ -82,11 +82,18 @@
 .cv-entry__title {
   font-family: var(--font-display);
   font-weight: 700;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .cv-entry__when {
   color: var(--fg-muted);
   font-size: var(--fs-sm);
+}
+
+.cv-entry__head .cv-entry__when {
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 @media (min-width: t.$bp-sm) {
