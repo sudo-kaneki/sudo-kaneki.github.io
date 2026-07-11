@@ -1,4 +1,12 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+# Single source of truth for three outputs:
+#   1. the /cv/ page          (_pages/cv.md)
+#   2. the homepage timeline  (_includes/timeline.liquid)
+#   3. the CV PDF             (.github/workflows/render-cv.yml → RenderCV)
+# Never duplicate career history anywhere else — edit it here and all three follow.
+#
+# Dates: prefer zero-padded YYYY-MM (e.g. 2024-07). The timeline normalizes
+# unpadded and year-only dates, but RenderCV's schema is stricter than we are.
 cv:
   name: Writabrata Bhattacharya
   headline: Applied Scientist | LLMs · Speech AI · MLOps · World Models

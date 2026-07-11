@@ -1,9 +1,38 @@
+{% comment %}
+  Renders the career timeline from _data/cv.yml — the single source of
+  truth for the CV page, this timeline, and the RenderCV PDF.
+
+  education and experience entries have different keys (institution/degree
+  vs company/position) but both carry start_date, so we concatenate them,
+  sort on a NORMALIZED date key, and discriminate at render time.
+
+  Liquid's `sort` is a byte-wise string compare, so we cannot sort on the
+  raw start_date: "2024-10" sorts before "2024-7" (because '1' < '7'),
+  which would silently invert the order. We therefore build an explicit
+  zero-padded YYYYMM sort key first, so any of 2024, 2024-7, or 2024-07
+  order correctly.
+{% endcomment %}
+
 {% assign edu = site.data.cv.cv.sections.education %}
 {% assign exp = site.data.cv.cv.sections.experience %}
-{% assign items = exp | concat: edu | sort: 'start_date' | reverse %}
+{% assign merged = exp | concat: edu %}
+
+{% comment %} Build "YYYYMM:::<index>" keys, sort them, then render by index. {% endcomment %}
+{% assign keys = '' | split: '' %}
+{% for item in merged %}
+  {% assign parts = item.start_date | append: '' | split: '-' %}
+  {% assign yr = parts[0] %}
+  {% assign mo = parts[1] | default: '01' %}
+  {% if mo.size == 1 %}{% assign mo = '0' | append: mo %}{% endif %}
+  {% assign key = yr | append: mo | append: ':::' | append: forloop.index0 %}
+  {% assign keys = keys | push: key %}
+{% endfor %}
+{% assign keys = keys | sort | reverse %}
 
 <ol class="timeline">
-  {% for item in items %}
+  {% for key in keys %}
+    {% assign idx = key | split: ':::' | last | plus: 0 %}
+    {% assign item = merged[idx] %}
     <li class="timeline__item">
       <span class="timeline__date">{{ item.start_date | slice: 0, 4 }}</span>
       <div class="timeline__body">

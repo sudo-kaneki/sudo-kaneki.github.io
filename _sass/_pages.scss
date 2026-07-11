@@ -9,7 +9,7 @@
 .hero__name {
   font-size: var(--fs-3xl);
   margin: 0 0 var(--sp-4);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--tracking-tight);
 }
 
 .hero__headline {
