@@ -41,6 +41,12 @@
   --shadow: 4px 4px 0 var(--border);
   --shadow-sm: 2px 2px 0 var(--border);
 
+  /* ---- Focus & text detail ---------------------------------- */
+  --focus-width: 2px;
+  --focus-offset: 2px;
+  --underline-offset: 3px;
+  --offscreen: -9999px;
+
   /* ---- Layout ---------------------------------------------- */
   --w-content: 720px;
   --w-wide: 960px;
@@ -74,9 +80,13 @@
   --accent-ink: #ffffff;
 }
 
-/* Contrast ratios (verified against WCAG 2.1 AA, 4.5:1 body text):
-   dark  — fg 15.0:1, fg-muted 7.2:1, accent 12.5:1
-   light — fg 16.1:1, fg-muted  5.4:1, accent  4.8:1          */
+/* Contrast ratios, computed from the hex values above via the WCAG
+   relative-luminance formula. AA body text requires 4.5:1.
+     dark  — fg 15.83:1, fg-muted 7.52:1, accent 11.94:1
+     light — fg 15.91:1, fg-muted 5.56:1, accent  4.83:1
+     accent-ink on accent — dark 11.94:1, light 5.37:1
+   The light accent (#0f7a4d on #f4f3ee) is the tightest pair, clearing
+   AA by only 0.33. Re-check it if you change the light palette.       */
 
 @media (prefers-reduced-motion: reduce) {
   :root {
