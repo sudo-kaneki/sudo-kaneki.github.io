@@ -1,0 +1,94 @@
+/* Rouge syntax highlighting, themed from tokens so it follows
+   light/dark automatically. Token class names are Rouge's. */
+
+.highlight,
+.highlighter-rouge .highlight {
+  background: transparent;
+}
+
+.highlight {
+  .c,
+  .c1,
+  .cm,
+  .cs,
+  .cd {
+    color: var(--syn-comment);
+    font-style: italic;
+  }
+  .k,
+  .kc,
+  .kd,
+  .kn,
+  .kp,
+  .kr,
+  .kt,
+  .kv {
+    color: var(--syn-keyword);
+  }
+  .o,
+  .ow {
+    color: var(--syn-keyword);
+  }
+  .s,
+  .s1,
+  .s2,
+  .sb,
+  .sc,
+  .sd,
+  .se,
+  .sh,
+  .si,
+  .sx,
+  .sr,
+  .ss {
+    color: var(--syn-string);
+  }
+  .m,
+  .mf,
+  .mh,
+  .mi,
+  .mo,
+  .mb,
+  .il {
+    color: var(--syn-number);
+  }
+  .nf,
+  .fm {
+    color: var(--syn-func);
+  }
+  .nb,
+  .bp {
+    color: var(--syn-func);
+  }
+  .n,
+  .na,
+  .nc,
+  .nd,
+  .ne,
+  .ni,
+  .nl,
+  .nn,
+  .no,
+  .nt,
+  .nv,
+  .nx,
+  .py,
+  .vc,
+  .vg,
+  .vi {
+    color: var(--syn-name);
+  }
+  .p,
+  .pi {
+    color: var(--syn-punct);
+  }
+  .err {
+    color: var(--syn-error);
+  }
+  .gd {
+    color: var(--syn-error);
+  }
+  .gi {
+    color: var(--syn-keyword);
+  }
+}

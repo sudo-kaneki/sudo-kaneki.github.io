@@ -51,8 +51,10 @@ third_party_libraries: {}
 include: ["_pages"]
 
 exclude:
+  - AGENTS.md
+  - ANALYTICS.md
   - bin/
-  - docs/
+  - CLAUDE.md
   - CONTRIBUTING.md
   - CUSTOMIZE.md
   - Dockerfile

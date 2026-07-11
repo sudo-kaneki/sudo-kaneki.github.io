@@ -76,6 +76,16 @@ $bp-sm: 640px;
   --accent: #5ee2a0; /* phosphor green, desaturated for AA */
   --accent-strong: #7dffb8;
   --accent-ink: #0b0d0c; /* text ON an accent background */
+
+  /* ---- Syntax (Rouge) --------------------------------------- */
+  --syn-comment: #7d887f; /* bumped from #6f7a72 (4.09:1) to clear AA on --surface */
+  --syn-keyword: #7dffb8;
+  --syn-string: #d3b58d;
+  --syn-number: #c9a0ff;
+  --syn-func: #8fd3ff;
+  --syn-name: #e6e8e6;
+  --syn-punct: #9aa39d;
+  --syn-error: #ff8a80;
 }
 
 /* ---- Light theme ------------------------------------------- */
@@ -88,6 +98,16 @@ $bp-sm: 640px;
   --accent: #0f7a4d;
   --accent-strong: #0a5c3a;
   --accent-ink: #ffffff;
+
+  /* ---- Syntax (Rouge) --------------------------------------- */
+  --syn-comment: #6b7280;
+  --syn-keyword: #0a5c3a;
+  --syn-string: #9a5b13;
+  --syn-number: #6b21a8;
+  --syn-func: #0b5f8a;
+  --syn-name: #16191a;
+  --syn-punct: #5b6360;
+  --syn-error: #b3261e;
 }
 
 /* Contrast ratios, computed from the hex values above via the WCAG
