@@ -54,6 +54,17 @@
   padding: var(--sp-2);
 }
 
+/* Icon is driven by CSS, not JS, so it can never disagree with the
+   theme: the inline head script stamps data-theme before first paint.
+   The glyph shows the theme you will switch TO. */
+.nav__toggle::before {
+  content: "☀";
+}
+
+:root[data-theme="light"] .nav__toggle::before {
+  content: "☾";
+}
+
 /* ---- Button: the key-press interaction ---------------------- */
 .btn {
   display: inline-block;
