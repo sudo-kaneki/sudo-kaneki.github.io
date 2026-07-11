@@ -41,13 +41,6 @@ plugins:
   - jekyll-sitemap
   - jemoji
 
-# The Gemfile's :jekyll_plugins group still declares jekyll-3rd-party-libraries
-# (auto-required by Bundler regardless of the plugins: list above). Its
-# after_init hook unconditionally iterates this key. An empty hash is a
-# harmless no-op. Task 7 removes the gem from the Gemfile; this stub can be
-# deleted then.
-third_party_libraries: {}
-
 include: ["_pages"]
 
 exclude:
