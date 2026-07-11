@@ -45,27 +45,17 @@ include: ["_pages"]
 
 exclude:
   - AGENTS.md
-  - ANALYTICS.md
-  - bin/
   - CLAUDE.md
-  - CONTRIBUTING.md
-  - CUSTOMIZE.md
   - Dockerfile
   - docker-compose.yml
-  - docker-compose-slim.yml
-  - FAQ.md
+  - docs/
   - Gemfile
   - Gemfile.lock
-  - INSTALL.md
   - LICENSE
-  - lighthouse_results/
   - package.json
   - package-lock.json
-  - QUICKSTART.md
   - README.md
   - requirements.txt
-  - SEO.md
-  - TROUBLESHOOTING.md
 
 defaults:
   - scope:
