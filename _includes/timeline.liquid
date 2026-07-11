@@ -1,0 +1,21 @@
+{% assign edu = site.data.cv.cv.sections.education %}
+{% assign exp = site.data.cv.cv.sections.experience %}
+{% assign items = exp | concat: edu | sort: 'start_date' | reverse %}
+
+<ol class="timeline">
+  {% for item in items %}
+    <li class="timeline__item">
+      <span class="timeline__date">{{ item.start_date | slice: 0, 4 }}</span>
+      <div class="timeline__body">
+        {% if item.company %}
+          <span class="timeline__title">{{ item.position }}</span>
+          <span class="timeline__org">{{ item.company }}</span>
+        {% else %}
+          <span class="timeline__title">{{ item.degree }}, {{ item.area }}</span>
+          <span class="timeline__org">{{ item.institution }}</span>
+        {% endif %}
+        <span class="timeline__meta">{{ item.start_date }} — {{ item.end_date }} · {{ item.location }}</span>
+      </div>
+    </li>
+  {% endfor %}
+</ol>
