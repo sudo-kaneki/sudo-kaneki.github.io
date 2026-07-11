@@ -26,7 +26,7 @@ These apply to **every** task. They are not repeated per-task.
 6. **All hover transforms and transitions must be disabled under `prefers-reduced-motion: reduce`.**
 7. **Dark is the default theme.** Light mode is fully supported and must be visually checked at every verification step, not just dark.
 8. **Run `npx prettier . --write` before every commit.** The repo has a Prettier CI gate (`.github/workflows/prettier.yml`) with the `@shopify/prettier-plugin-liquid` plugin.
-9. **Never `git add -A`.** The working tree has a pre-existing unstaged deletion (`assets/img/prof_pic_color.png`) that is not part of this work. Always `git add` explicit paths.
+9. **Never `git add -A`.** It would sweep in untracked build output. Stage explicit paths, or `git add -u` (tracked modifications only) once Task 1 has cleared the working tree.
 
 ### Verification commands (used throughout)
 
@@ -102,18 +102,26 @@ git rm --quiet assets/pdf/example_pdf.pdf \
   "CV_Writabrata (1).pdf"
 ```
 
+The working tree already carries an unstaged deletion of `assets/img/prof_pic_color.png`. Its only reference in the repo is `_posts/2024-01-27-advanced-images.md`, a demo post this task deletes — so the deletion is correct and belongs in this commit. Stage it:
+
+```bash
+git add assets/img/prof_pic_color.png
+```
+
 <!-- prettier-ignore -->
 - [ ] **Step 2: Keep `_posts/` alive as a directory**
 
-`git rm _posts/*.md` removes the directory entirely. Jekyll tolerates a missing `_posts/`, but `paginate-v2` on `_pages/blog.md` will error with `Pagination: Pagination is enabled, but I couldn't find any posts`. Add a `.gitkeep` so the directory survives, and disable pagination until there are posts (re-enabled in Task 4).
+`git rm _posts/*.md` removes the directory entirely. Jekyll tolerates a missing `_posts/`, but `jekyll-paginate-v2` is enabled and will abort the build with `Pagination: Pagination is enabled, but I couldn't find any posts`. Add a `.gitkeep` so the directory survives:
 
 ```bash
 mkdir -p _posts && touch _posts/.gitkeep
 git add _posts/.gitkeep
 ```
 
+A `.gitkeep` alone does **not** satisfy paginate-v2 — it needs actual posts. Pagination is therefore disabled in the next step, and stays disabled: Task 6's rewritten `_config.yml` omits the `pagination:` block entirely. It is never re-enabled by this plan.
+
 <!-- prettier-ignore -->
-- [ ] **Step 3: Remove the dead collections from `_config.yml`**
+- [ ] **Step 3: Remove the dead collections and disable pagination in `_config.yml`**
 
 Find the `collections:` block (around line 155) and reduce it to nothing. Delete these lines entirely:
 
@@ -132,6 +140,22 @@ collections:
 ```
 
 Then find the `defaults:` block (around line 234) and delete any `scope:` entry whose `type:` is `books`, `news`, `projects`, or `teachings`. Leave `posts` and `pages` scopes intact.
+
+Finally, disable pagination. At line 99 the file reads:
+
+```yaml
+pagination:
+  enabled: true
+```
+
+Change it to:
+
+```yaml
+pagination:
+  enabled: false
+```
+
+Without this, the build aborts: `jekyll-paginate-v2` is enabled but `_posts/` is now empty.
 
 <!-- prettier-ignore -->
 - [ ] **Step 4: Verify the build is green**
@@ -1589,9 +1613,10 @@ title: blog
 <!-- prettier-ignore -->
 - [ ] **Step 9: Add a smoke-test post so the blog and filter are actually exercised**
 
-An empty blog cannot demonstrate that filtering works. Create `_posts/2026-07-11-hello.md`:
+An empty blog cannot demonstrate that filtering, MathJax, or syntax highlighting work. Write the post with this heredoc exactly as given — it contains a fenced code block, so transcribing it by hand into an editor is error-prone:
 
-```markdown
+```bash
+cat > _posts/2026-07-11-hello.md <<'POST'
 ---
 layout: article
 title: Hello
@@ -1602,12 +1627,13 @@ math: true
 
 First post. Inline math renders: $e^{i\pi} + 1 = 0$.
 
-\`\`\`python
+```python
 print("code renders too")
-\`\`\`
+```
+POST
 ```
 
-Replace the `\`\`\`` sequences above with three real backticks — they are escaped here only to keep this plan's code fence intact.
+This post is a real post and stays in the repo — it exercises the `article` layout, the category filter, MathJax, and Rouge. Delete it whenever you write a real first post.
 
 <!-- prettier-ignore -->
 - [ ] **Step 10: Verify all four routes**
@@ -1690,10 +1716,12 @@ The moment of truth. The new theme takes the real permalinks, and al-folio's pre
 Delete the al-folio pages that own them, and the preview scaffold:
 
 ```bash
-git rm --quiet _pages/about.md _pages/publications.md _pages/preview.md
+# Delete the al-folio pages that currently own /, /cv/, /blog/, /publications/
+git rm --quiet _pages/about.md _pages/publications.md _pages/cv.md _pages/blog.md
+# Delete the preview scaffold and the now-unused bibliography
+git rm --quiet _pages/preview.md
 git rm -r --quiet _bibliography
-git mv _pages/cv.md _pages/cv-OLD.md && git rm --quiet _pages/cv-OLD.md
-git mv _pages/blog.md _pages/blog-OLD.md && git rm --quiet _pages/blog-OLD.md
+# The new pages take the real names
 git mv _pages/cv-new.md _pages/cv.md
 git mv _pages/projects-new.md _pages/projects.md
 git mv _pages/blog-new.md _pages/blog.md
