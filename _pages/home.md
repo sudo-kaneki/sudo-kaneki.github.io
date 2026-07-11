@@ -20,4 +20,4 @@ latent world representations enable better planning and decision-making agents. 
 game development and quantitative finance.
 
 Outside research I've mentored Mathematics and Physics Olympiad students, led the editorial team at
-the PGDBA annual AI magazine (AINA 4.0), and play football, basketball, padel, and guitar. 🎸
+the PGDBA annual AI magazine (AINA 4.0), and play football, basketball, padel, and guitar.

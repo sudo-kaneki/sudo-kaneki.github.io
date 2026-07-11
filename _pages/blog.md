@@ -4,13 +4,21 @@ permalink: /blog/
 title: blog
 ---
 
-<div class="tabs" role="group" aria-label="Filter posts by category">
-  <button class="tab" type="button" data-filter="all" aria-pressed="true">all</button>
-  {% assign cats = site.categories | sort %}
-  {% for cat in cats %}
-    <button class="tab" type="button" data-filter="{{ cat[0] | downcase }}" aria-pressed="false">{{ cat[0] }}</button>
-  {% endfor %}
-</div>
+{% comment %}
+The filter only renders when there is more than one category to filter by.
+With zero or one category the buttons are pure noise — an "all" button that
+filters nothing.
+{% endcomment %}
+{% assign cats = site.categories | sort %}
+{% if cats.size > 1 %}
+
+  <div class="tabs" role="group" aria-label="Filter posts by category">
+    <button class="tab" type="button" data-filter="all" aria-pressed="true">all</button>
+    {% for cat in cats %}
+      <button class="tab" type="button" data-filter="{{ cat[0] | downcase }}" aria-pressed="false">{{ cat[0] }}</button>
+    {% endfor %}
+  </div>
+{% endif %}
 
 {% if site.posts.size > 0 %}
 

@@ -71,6 +71,24 @@
   flex: 0 0 var(--ch-date);
 }
 
+/* ---- Contact ------------------------------------------------ */
+.contact {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contact li {
+  display: flex;
+  gap: var(--sp-4);
+  padding: var(--sp-2) 0;
+}
+
+.contact__label {
+  color: var(--fg-muted);
+  flex: 0 0 var(--ch-date);
+}
+
 /* ---- CV ----------------------------------------------------- */
 .cv-entry {
   padding: var(--sp-6) 0;

@@ -56,13 +56,27 @@ layout: base
   <p>
     <a href="https://github.com/{{ site.data.socials.github_username }}">github</a> ·
     <a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}">linkedin</a> ·
-    {% comment %}
-      Link text is the word "email", not the address: jekyll-minifier
-      collapses the &#NN; entities html_encode_email would otherwise
-      produce for visible text back down to literal characters, which
-      would defeat the obfuscation. The href stays percent-encoded
-      (encode_email), which the minifier does not touch.
-    {% endcomment %}
-    <a href="mailto:{{ site.data.socials.email | encode_email }}">email</a>
+    <a href="{{ site.data.socials.website }}">website</a>
   </p>
+
+  {% comment %}
+    Link text is a label, never the address itself: jekyll-minifier collapses
+    the &#NN; entities that html_encode_email produces for visible text back
+    into literal characters, which would defeat the obfuscation. The href stays
+    percent-encoded via encode_email, which the minifier leaves alone.
+  {% endcomment %}
+  <ul class="contact">
+    <li>
+      <span class="contact__label">personal</span>
+      <a href="mailto:{{ site.data.socials.email | encode_email }}">email</a>
+    </li>
+    <li>
+      <span class="contact__label">work</span>
+      <a href="mailto:{{ site.data.socials.email_work | encode_email }}">email</a>
+    </li>
+    <li>
+      <span class="contact__label">phone</span>
+      <a href="tel:{{ site.data.socials.phone | remove: ' ' }}">{{ site.data.socials.phone }}</a>
+    </li>
+  </ul>
 </section>

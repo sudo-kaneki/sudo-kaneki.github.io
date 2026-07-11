@@ -13,13 +13,13 @@ cv:
   location: Abu Dhabi, United Arab Emirates
   email: cmi.writabrata.10@gmail.com
   photo:
-  phone:
+  phone: tel:+971-54-521-5572
   website:
   social_networks:
     - network: GitHub
       username: sudo-kaneki
     - network: LinkedIn
-      username: writabrata-bhattacharya
+      username: writabrata-bhattacharya-2b05b715a
 
   sections:
     education:
