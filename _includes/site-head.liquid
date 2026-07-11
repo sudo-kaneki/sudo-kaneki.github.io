@@ -1,0 +1,47 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% assign page_title = page.title | default: site.first_name | append: ' ' | append: site.last_name %}
+<title>
+  {{ page_title }}
+  ·
+  {{ site.first_name }}
+  {{ site.last_name }}
+</title>
+<meta name="description" content="{{ page.description | default: site.description | strip_newlines | strip }}">
+<link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+
+<link
+  rel="shortcut icon"
+  href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ site.icon }}</text></svg>"
+>
+
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+
+<script>
+  // Blocking on purpose: must run before first paint to avoid a
+  // flash of the wrong theme. Dark is the default.
+  (function () {
+    var stored = null;
+    try {
+      stored = localStorage.getItem('theme');
+    } catch (e) {}
+    var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    var theme = stored || (prefersLight ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+
+{% if page.math %}
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [
+          ['$', '$'],
+          ['\\(', '\\)'],
+        ],
+      },
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endif %}

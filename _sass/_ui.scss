@@ -1,0 +1,230 @@
+/* ---- Nav ---------------------------------------------------- */
+.nav {
+  border-bottom: var(--bw) solid var(--border);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.nav__inner {
+  max-width: var(--w-wide);
+  margin: 0 auto;
+  padding: var(--sp-4);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-6);
+}
+
+.nav__brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--fg);
+  text-decoration: none;
+  border: var(--bw) solid var(--border);
+  padding: var(--sp-1) var(--sp-2);
+}
+
+.nav__links {
+  display: flex;
+  gap: var(--sp-4);
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.nav__links a {
+  color: var(--fg-muted);
+  text-decoration: none;
+}
+
+.nav__links a:hover {
+  color: var(--accent);
+}
+
+.nav__toggle {
+  background: transparent;
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  color: var(--fg);
+  cursor: pointer;
+  font-size: var(--fs-base);
+  line-height: 1;
+  padding: var(--sp-2);
+}
+
+/* ---- Button: the key-press interaction ---------------------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  background: var(--surface);
+  color: var(--fg);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--sp-3) var(--sp-6);
+  text-decoration: none;
+  transition:
+    transform var(--t),
+    box-shadow var(--t);
+}
+
+.btn:hover {
+  color: var(--accent);
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.btn--accent {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn--accent:hover {
+  color: var(--accent-ink);
+}
+
+/* ---- Card --------------------------------------------------- */
+.card {
+  background: var(--surface);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--sp-6);
+  transition:
+    transform var(--t),
+    box-shadow var(--t);
+}
+
+.card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---- Tag ---------------------------------------------------- */
+.tag {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  color: var(--fg-muted);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  padding: 0 var(--sp-2);
+  margin: 0 var(--sp-1) var(--sp-1) 0;
+}
+
+/* ---- Tabs (blog filter) ------------------------------------- */
+.tabs {
+  display: flex;
+  border: var(--bw) solid var(--border);
+  margin-bottom: var(--sp-8);
+  width: fit-content;
+}
+
+.tab {
+  background: transparent;
+  border: 0;
+  border-right: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  color: var(--fg-muted);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  padding: var(--sp-2) var(--sp-4);
+}
+
+.tab:last-child {
+  border-right: 0;
+}
+
+.tab[aria-selected="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* ---- Timeline ----------------------------------------------- */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 var(--sp-6);
+  border-left: var(--bw) solid var(--border);
+}
+
+.timeline__item {
+  display: flex;
+  gap: var(--sp-6);
+  padding: var(--sp-4) 0;
+  position: relative;
+}
+
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--sp-6) - 4px);
+  top: var(--sp-6);
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+}
+
+.timeline__date {
+  font-family: var(--font-display);
+  color: var(--accent);
+  flex: 0 0 4ch;
+}
+
+.timeline__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline__title {
+  font-family: var(--font-display);
+  color: var(--fg);
+}
+
+.timeline__org {
+  color: var(--fg-muted);
+}
+
+.timeline__meta {
+  color: var(--fg-muted);
+  font-size: var(--fs-xs);
+}
+
+/* ---- Footer ------------------------------------------------- */
+.footer {
+  border-top: var(--bw) solid var(--border);
+  margin-top: var(--sp-24);
+}
+
+.footer__inner {
+  max-width: var(--w-wide);
+  margin: 0 auto;
+  padding: var(--sp-6) var(--sp-4);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  color: var(--fg-muted);
+  font-size: var(--fs-sm);
+}
+
+.footer__links {
+  display: flex;
+  gap: var(--sp-4);
+}
+
+@media (max-width: 640px) {
+  .nav__inner {
+    gap: var(--sp-3);
+  }
+
+  .timeline__item {
+    flex-direction: column;
+    gap: var(--sp-1);
+  }
+}

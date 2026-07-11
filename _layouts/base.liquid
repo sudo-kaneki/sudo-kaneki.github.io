@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    {% include site-head.liquid %}
+  </head>
+  <body>
+    {% include site-nav.liquid %}
+    <main id="main" class="wrap">
+      {{ content }}
+    </main>
+    {% include site-footer.liquid %}
+    <script defer src="{{ '/assets/js/theme-toggle.js' | relative_url }}"></script>
+  </body>
+</html>
