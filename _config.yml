@@ -1,13 +1,11 @@
 # -----------------------------------------------------------------------------
 # Site
 # -----------------------------------------------------------------------------
-title: blank
+title: Writabrata Bhattacharya
 first_name: Writabrata
-middle_name:
 last_name: Bhattacharya
 description: >
   Applied Scientist | LLMs, Speech Deep Learning, MLOps & World Models
-keywords: machine-learning, deep-learning, LLM, speech, TTS, STT, MLOps, world-models, reinforcement-learning
 lang: en
 icon: ⚛️
 url: https://sudo-kaneki.github.io
@@ -16,8 +14,6 @@ baseurl:
 # -----------------------------------------------------------------------------
 # Blog
 # -----------------------------------------------------------------------------
-blog_name: Writabrata's Blog
-blog_description: Thoughts on ML, AI, Mathematics & beyond
 permalink: /blog/:year/:title/
 
 # -----------------------------------------------------------------------------
@@ -56,6 +52,12 @@ exclude:
   - package-lock.json
   - README.md
   - requirements.txt
+  # The current design has no profile photo — remove this line if one is
+  # added back, so assets/img/ publishes normally again.
+  - assets/img/
+  - assets/rendercv/design.yaml
+  - assets/rendercv/locale.yaml
+  - assets/rendercv/settings.yaml
 
 defaults:
   - scope:
@@ -71,3 +73,7 @@ jekyll-minifier:
   exclude: ["robots.txt"]
   compress_javascript: true
   compress_css: true
+
+sass:
+  sourcemap: never
+  style: compressed
