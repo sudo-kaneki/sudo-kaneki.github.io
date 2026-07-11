@@ -28,6 +28,11 @@ $bp-sm: 640px;
   --lh-tight: 1.25;
   --lh-base: 1.7;
   --tracking-tight: -0.01em;
+  --fw-display: 700;
+
+  /* ---- Column widths (must clear the widest glyph, not "0") ---- */
+  --ch-year: 5ch;
+  --ch-date: 11ch;
 
   /* ---- Spacing (4px base) ---------------------------------- */
   --sp-1: 0.25rem;
@@ -121,5 +126,30 @@ $bp-sm: 640px;
 @media (prefers-reduced-motion: reduce) {
   :root {
     --t: 0ms;
+  }
+}
+
+/* No-JS fallback: honour the OS preference, matching what the inline
+   head script does. An explicit [data-theme] always wins over this. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg: #f4f3ee;
+    --surface: #ffffff;
+    --fg: #16191a;
+    --fg-muted: #5b6360;
+    --border: #d4d3cc;
+    --accent: #0f7a4d;
+    --accent-strong: #0a5c3a;
+    --accent-ink: #ffffff;
+
+    /* ---- Syntax (Rouge) --------------------------------------- */
+    --syn-comment: #6b7280;
+    --syn-keyword: #0a5c3a;
+    --syn-string: #9a5b13;
+    --syn-number: #6b21a8;
+    --syn-func: #0b5f8a;
+    --syn-name: #16191a;
+    --syn-punct: #5b6360;
+    --syn-error: #b3261e;
   }
 }

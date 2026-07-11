@@ -1,13 +1,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{%- if page.title -%}
+{%- if page.url == '/' -%}
+  {%- assign page_title = site.first_name | append: ' ' | append: site.last_name | append: ' · ' | append: site.data.cv.cv.headline -%}
+{%- elsif page.title -%}
   {%- assign page_title = page.title | append: ' · ' | append: site.first_name | append: ' ' | append: site.last_name -%}
 {%- else -%}
   {%- assign page_title = site.first_name | append: ' ' | append: site.last_name -%}
 {%- endif -%}
 <title>{{ page_title }}</title>
 <meta name="description" content="{{ page.description | default: site.description | strip_newlines | strip }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page.description | default: site.description | strip_newlines | strip }}">
+<meta property="og:url" content="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+<meta property="og:site_name" content="{{ site.first_name }} {{ site.last_name }}">
+<meta name="twitter:card" content="summary">
+<meta name="color-scheme" content="dark light">
 <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
 {% feed_meta %}
 

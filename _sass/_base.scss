@@ -26,7 +26,7 @@ h4 {
   font-family: var(--font-display);
   line-height: var(--lh-tight);
   margin: 0 0 var(--sp-4);
-  font-weight: 700;
+  font-weight: var(--fw-display);
 }
 
 h1 {
@@ -99,6 +99,14 @@ table {
   max-width: var(--w-content);
   margin: 0 auto;
   padding: var(--sp-12) var(--sp-4);
+}
+
+[id] {
+  scroll-margin-top: var(--sp-16);
+}
+
+main:focus {
+  outline: none;
 }
 
 .skip-link {

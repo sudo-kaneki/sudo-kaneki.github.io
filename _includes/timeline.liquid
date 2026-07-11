@@ -43,7 +43,11 @@
           <span class="timeline__title">{{ item.degree }}, {{ item.area }}</span>
           <span class="timeline__org">{{ item.institution }}</span>
         {% endif %}
-        <span class="timeline__meta">{{ item.start_date }} — {{ item.end_date }} · {{ item.location }}</span>
+        <span class="timeline__meta">
+          {{ item.start_date -}}
+          {%- if item.end_date %} — {{ item.end_date }}{% endif -%}
+          {%- if item.location %} · {{ item.location }}{% endif %}
+        </span>
       </div>
     </li>
   {% endfor %}

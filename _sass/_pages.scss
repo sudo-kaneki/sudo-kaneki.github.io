@@ -10,6 +10,7 @@
   font-size: var(--fs-3xl);
   margin: 0 0 var(--sp-4);
   letter-spacing: var(--tracking-tight);
+  overflow-wrap: anywhere;
 }
 
 .hero__headline {
@@ -60,10 +61,14 @@
   border-bottom: var(--bw) solid var(--border);
 }
 
+.post-list__item[hidden] {
+  display: none;
+}
+
 .post-list__date {
   color: var(--fg-muted);
   font-size: var(--fs-sm);
-  flex: 0 0 10ch;
+  flex: 0 0 var(--ch-date);
 }
 
 /* ---- CV ----------------------------------------------------- */
@@ -81,12 +86,13 @@
 
 .cv-entry__title {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: var(--fw-display);
   flex: 1 1 auto;
   min-width: 0;
 }
 
-.cv-entry__when {
+.cv-entry__when,
+.cv-entry__meta {
   color: var(--fg-muted);
   font-size: var(--fs-sm);
 }

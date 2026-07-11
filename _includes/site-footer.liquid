@@ -9,7 +9,7 @@
       <a href="https://github.com/{{ site.data.socials.github_username }}">github</a>
       <a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}">linkedin</a>
       <a href="{{ site.data.socials.website }}">website</a>
-      <a href="mailto:{{ site.data.socials.email }}">email</a>
+      <a href="mailto:{{ site.data.socials.email | encode_email }}">email</a>
     </span>
   </div>
 </footer>

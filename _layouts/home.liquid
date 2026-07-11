@@ -9,7 +9,7 @@ layout: base
   </h1>
   <p class="hero__headline">{{ site.data.cv.cv.headline }}</p>
   <p class="hero__actions">
-    <a class="btn btn--accent" href="mailto:{{ site.data.socials.email }}">contact</a>
+    <a class="btn btn--accent" href="mailto:{{ site.data.socials.email | encode_email }}">contact</a>
     <a class="btn" href="{{ '/cv/' | relative_url }}">cv</a>
   </p>
 </section>
@@ -56,6 +56,13 @@ layout: base
   <p>
     <a href="https://github.com/{{ site.data.socials.github_username }}">github</a> ·
     <a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}">linkedin</a> ·
-    <a href="mailto:{{ site.data.socials.email }}">{{ site.data.socials.email }}</a>
+    {% comment %}
+      Link text is the word "email", not the address: jekyll-minifier
+      collapses the &#NN; entities html_encode_email would otherwise
+      produce for visible text back down to literal characters, which
+      would defeat the obfuscation. The href stays percent-encoded
+      (encode_email), which the minifier does not touch.
+    {% endcomment %}
+    <a href="mailto:{{ site.data.socials.email | encode_email }}">email</a>
   </p>
 </section>

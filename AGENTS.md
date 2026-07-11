@@ -45,6 +45,19 @@ that translate by 2px so buttons depress like keys. All motion is disabled under
 
 Dark is the default theme. Light must be checked too — both are first-class.
 
+### Swapping in a pixel font
+
+Set `--font-display` (and optionally `--font-body`) plus:
+
+- `--fw-display: 400` — pixel/bitmap fonts ship exactly one weight; the
+  browser fakes bold by smearing glyphs horizontally, which destroys the
+  pixel grid.
+- Re-pitch the `--fs-*` scale to multiples of 8px. Bitmap fonts only render
+  crisply at integer multiples of their design size, and the current scale
+  (14/20/28px, etc.) is not — glyphs would blur.
+- Check `--lh-tight` and `--tracking-tight` too; a pixel face may need both
+  loosened to avoid clipping or overlapping glyphs.
+
 ## Data
 
 `_data/cv.yml` is the **single source of truth** for three outputs: the `/cv/`
