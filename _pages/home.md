@@ -1,6 +1,6 @@
 ---
 layout: home
-permalink: /preview-home/
+permalink: /
 title: home
 ---
 

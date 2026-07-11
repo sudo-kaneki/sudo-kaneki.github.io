@@ -1,6 +1,6 @@
 ---
 layout: listing
-permalink: /projects-new/
+permalink: /projects/
 title: projects
 ---
 
