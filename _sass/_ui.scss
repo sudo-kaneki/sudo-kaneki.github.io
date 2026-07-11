@@ -1,3 +1,5 @@
+@use "tokens" as t;
+
 /* ---- Nav ---------------------------------------------------- */
 .nav {
   border-bottom: var(--bw) solid var(--border);
@@ -70,12 +72,12 @@
 
 .btn:hover {
   color: var(--accent);
-  transform: translate(2px, 2px);
+  transform: translate(var(--press), var(--press));
   box-shadow: var(--shadow-sm);
 }
 
 .btn:active {
-  transform: translate(4px, 4px);
+  transform: translate(var(--press-deep), var(--press-deep));
   box-shadow: none;
 }
 
@@ -101,7 +103,7 @@
 }
 
 .card:hover {
-  transform: translate(2px, 2px);
+  transform: translate(var(--press), var(--press));
   box-shadow: var(--shadow-sm);
 }
 
@@ -163,10 +165,10 @@
 .timeline__item::before {
   content: "";
   position: absolute;
-  left: calc(-1 * var(--sp-6) - 4px);
+  left: calc(-1 * var(--sp-6) - (var(--dot) / 2));
   top: var(--sp-6);
-  width: 7px;
-  height: 7px;
+  width: var(--dot);
+  height: var(--dot);
   background: var(--accent);
 }
 
@@ -218,7 +220,7 @@
   gap: var(--sp-4);
 }
 
-@media (max-width: 640px) {
+@media (max-width: t.$bp-sm) {
   .nav__inner {
     gap: var(--sp-3);
   }

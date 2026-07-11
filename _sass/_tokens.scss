@@ -1,3 +1,7 @@
+/* Breakpoint. Must be a Sass variable, not a CSS custom property:
+   var() is not permitted inside a @media condition. */
+$bp-sm: 640px;
+
 /* =============================================================
    DESIGN TOKENS — the only file permitted to contain literal
    colours, sizes, or font names. Everything else uses var().
@@ -40,6 +44,11 @@
   --bw: 1px;
   --shadow: 4px 4px 0 var(--border);
   --shadow-sm: 2px 2px 0 var(--border);
+
+  /* ---- Interaction geometry --------------------------------- */
+  --press: 2px; /* hover: how far a key depresses */
+  --press-deep: 4px; /* active: fully pressed */
+  --dot: 7px; /* timeline marker */
 
   /* ---- Focus & text detail ---------------------------------- */
   --focus-width: 2px;
