@@ -32,8 +32,12 @@ h4 {
 h1 {
   font-size: var(--fs-2xl);
 }
+/* Section headings are the accent colour everywhere — home, cv, and inside
+   blog posts — so a new section always reads as a break rather than as more
+   body copy. h1 stays --fg: the page title should not compete with them. */
 h2 {
   font-size: var(--fs-xl);
+  color: var(--accent);
 }
 h3 {
   font-size: var(--fs-lg);
