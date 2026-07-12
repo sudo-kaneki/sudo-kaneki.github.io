@@ -95,6 +95,18 @@
   border-bottom: var(--bw) solid var(--border);
 }
 
+/* A section heading that follows an entry sits right on top of that entry's
+   bottom border. Give the new section room to breathe. The download button
+   needs the same clearance before the first heading, which has no entry
+   above it for the sibling selector to catch. */
+.cv-entry + h2 {
+  margin-top: var(--sp-12);
+}
+
+.cv-download {
+  margin-bottom: var(--sp-12);
+}
+
 .cv-entry__head {
   display: flex;
   justify-content: space-between;

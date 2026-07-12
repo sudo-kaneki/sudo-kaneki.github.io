@@ -4,7 +4,7 @@ permalink: /cv/
 title: cv
 ---
 
-<p>
+<p class="cv-download">
   <a class="btn btn--accent" href="{{ site.data.socials.cv_pdf | relative_url }}">download pdf ↓</a>
 </p>
 

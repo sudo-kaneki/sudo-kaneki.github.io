@@ -20,9 +20,24 @@
 <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
 {% feed_meta %}
 
+{% comment %}
+  Favicon: the WB monogram from the nav, blinking like a terminal cursor.
+
+  The blink is done by swapping this link's href on a timer (see
+  favicon-blink.js), NOT by animating the SVG — Chrome rasterizes an SVG
+  favicon once and never animates it, so SMIL/CSS animation inside the SVG
+  would simply not blink for most visitors.
+
+  The colours are hardcoded here and are the one sanctioned exception to the
+  "_tokens.scss owns every literal" rule: an SVG data URI cannot read a CSS
+  custom property. Keep %235ee2a0 and %230b0d0c in sync with --accent and
+  --bg in _sass/_tokens.scss.
+{% endcomment %}
 <link
-  rel="shortcut icon"
-  href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ site.icon }}</text></svg>"
+  rel="icon"
+  id="favicon"
+  type="image/svg+xml"
+  href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%235ee2a0'/><text x='16' y='22' font-family='ui-monospace,SFMono-Regular,Menlo,monospace' font-size='15' font-weight='700' text-anchor='middle' fill='%230b0d0c'>WB</text></svg>"
 >
 
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
