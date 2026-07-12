@@ -72,7 +72,14 @@ defaults:
 jekyll-minifier:
   exclude: ["robots.txt"]
   compress_javascript: true
-  compress_css: true
+  # CSS compression is OFF on purpose. It corrupts valid CSS: inside calc() it
+  # parses the hyphens of a custom property as subtraction, rewriting
+  # var(--sp-6) into var( - - sp - 6) and silently invalidating the whole
+  # declaration. It broke the timeline marker in production while every local
+  # (development) build looked fine, because minification only runs in prod.
+  # It also buys nothing: Sass already emits compressed CSS (see sass.style
+  # below), and turning this off is 4 bytes SMALLER after gzip.
+  compress_css: false
 
 sass:
   sourcemap: never

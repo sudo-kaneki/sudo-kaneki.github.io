@@ -160,24 +160,31 @@
 }
 
 /* ---- Timeline ----------------------------------------------- */
+/* The indent lives on the item, not the list, so the marker can sit at the
+   item's own left edge — which coincides with the rail. That avoids a
+   negative calc() offset, and calc() is not safe here: the production CSS
+   minifier parses the hyphens in a custom property as subtraction and
+   rewrites var(--sp-6) into var( - - sp - 6), silently invalidating the
+   declaration. It only does this INSIDE calc(). Keep this file calc-free. */
 .timeline {
   list-style: none;
   margin: 0;
-  padding: 0 0 0 var(--sp-6);
+  padding: 0;
   border-left: var(--bw) solid var(--border);
 }
 
 .timeline__item {
   display: flex;
   gap: var(--sp-6);
-  padding: var(--sp-4) 0;
+  padding: var(--sp-4) 0 var(--sp-4) var(--sp-6);
   position: relative;
 }
 
 .timeline__item::before {
   content: "";
   position: absolute;
-  left: calc(-1 * var(--sp-6) - (var(--dot) / 2));
+  left: 0;
+  transform: translateX(-50%);
   top: var(--sp-6);
   width: var(--dot);
   height: var(--dot);
