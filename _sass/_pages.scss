@@ -35,8 +35,8 @@
   border-bottom: 0;
 }
 
+/* Colour now comes from the base h2 rule. */
 .section h2 {
-  color: var(--accent);
   text-transform: lowercase;
 }
 
