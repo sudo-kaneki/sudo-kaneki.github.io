@@ -11,7 +11,7 @@ cv:
   name: Writabrata Bhattacharya
   headline: Senior Applied Scientist | GenAI · LLMs · Speech AI · MLOps · Time-Series Forecasting
   location: Abu Dhabi, United Arab Emirates
-  email: writabrata.bhattacha@inceptionai.ai
+  email: cmi.writabrata.10@gmail.com
   photo:
   phone: tel:+971-54-521-5572
   website:
@@ -75,14 +75,14 @@ cv:
     education:
       - institution: Indian Institute of Technology Kharagpur
         area: Business Analytics
-        degree: PG Diploma
+        degree: PGDBA
         start_date: 2022-08
         end_date: 2024-05
         location: Kharagpur, India
         summary:
         highlights:
           - "Relevant Coursework: Statistical Learning, Deep Learning, Bayesian Inference, Categorical Data Analysis"
-          - Editor-in-Chief of the PGDBA Annual AI and Analytics Magazine (AINA 4.0), leading a team of 6
+          - Ranked 6th of 65 — top 10% of the PGDBA cohort
 
       - institution: Chennai Mathematical Institute
         area: Pure Mathematics
@@ -174,7 +174,7 @@ cv:
         details: "LLMs, RAG, Fine-tuning (LoRA/PEFT), TTS, STT, NLP, Embeddings, Transformers, Reinforcement Learning"
 
       - label: MLOps & Engineering
-        details: "Docker, Kubernetes, FastAPI, Azure, Databricks, vLLM, Gradio, Load Testing, Production Deployment"
+        details: "Docker, Kubernetes, FastAPI, Azure, Databricks, vLLM, Gradio, OpenTelemetry, Postgres/SQLModel, Load Testing, Production Deployment"
 
       - label: Statistics & Mathematics
         details: "Time Series, Stochastic Processes, Bayesian Inference, Measure Theory, Statistical Learning"
@@ -183,7 +183,7 @@ cv:
         details: "Python, R, Haskell, C++, JavaScript"
 
       - label: Frameworks & Tools
-        details: "PyTorch, LangChain, Hugging Face, verl, vLLM"
+        details: "PyTorch, LangChain, Hugging Face, OpenAI Agents SDK, Langfuse, verl, vLLM"
 
     languages:
       - label: English
