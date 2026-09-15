@@ -29,7 +29,7 @@
           <span class="cv-entry__title">{{ entry.label }}</span>
       {% endcase %}
 
-      {% if kind == 'experience' or kind == 'education' %}
+      {% if entry.start_date %}
         <span class="cv-entry__when">
           {{ entry.start_date -}}
           {%- if entry.end_date %} — {{ entry.end_date }}{% endif %}

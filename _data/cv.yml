@@ -23,26 +23,16 @@ cv:
 
   sections:
     experience:
-      # Two projects under one Inception role. They are modelled as two entries
-      # (project in the position line) rather than sub-headers inside one
-      # entry's bullets, because RenderCV bullets every highlight — the only way
-      # to get a flush-left, un-bulleted project header in the PDF is a real
-      # entry. _includes/timeline.liquid dedupes these back to a single
-      # "Senior Applied Scientist · Inception" row on the homepage.
-      - company: Inception Institute of Artificial Intelligence
-        position: Senior Applied Scientist · EnergyAI (ADNOC)
-        start_date: 2024-07
-        end_date: present
-        location: Abu Dhabi, UAE
-        summary:
-        highlights:
-          - Led design and development of advanced RAG systems for upstream oil & gas operations, handling structured and unstructured data to deliver context-aware responses
-          - Optimized RAG pipeline using Azure Document Intelligence for PDF parsing and dynamic semantic chunking, minimising context loss
-          - "Fine-tuned Meta's LLaMA 70B using PEFT and full fine-tuning; performed LoRA fine-tuning on Qwen3-Embedding-8B with model merging (arXiv:2601.04720) for superior domain-specific retrieval"
-          - Built end-to-end evaluation framework auditing all RAG stages (OCR, chunking, retrieval accuracy, generation fidelity) for systematic performance tracking
-          - Benchmarked state-of-the-art and open-source LLMs and embedding models on oil & gas domain data
-          - Developed a Chatbot Arena-style frontend for direct LLM comparison and executed load/stress testing for production deployment
-
+      # Two projects under one Inception role, modelled as two entries (project
+      # in the position line) rather than sub-headers inside one entry's
+      # bullets, because RenderCV bullets every highlight — the only way to a
+      # flush-left, un-bulleted project header in the PDF is a real entry.
+      #
+      # Only the FIRST (MRG) entry carries the dates; the second is the same
+      # period, shown once. The timeline derives "2024" from the dated entry,
+      # so if these are reordered the first one must keep start_date.
+      # _includes/timeline.liquid dedupes both back to a single
+      # "Senior Applied Scientist · Inception" homepage row.
       - company: Inception Institute of Artificial Intelligence
         position: Senior Applied Scientist · Machine-Readable Government (DGE Abu Dhabi)
         start_date: 2024-07
@@ -56,6 +46,19 @@ cv:
           - "Built a PDF → policy-graph extraction pipeline with 3-stage LLM validation, preserving clause locators and resolving cross-policy replaces / cancels / amends links for auditable checks"
           - "Developed an evaluation framework across retrieval, compliance, decision, and graph accuracy, run through a containerized, sharded, resumable harness, with Langfuse + OpenTelemetry observability"
           - "Deployed on Azure Kubernetes with Terraform IaC and Service Bus–throttled workers; secured with Entra ID (OAuth2 + PKCE), Postgres row-level multi-tenancy, and a Ruff / pytest / Checkov CI/CD gate"
+
+      # No dates here: same role and period as the entry above, shown once.
+      - company: Inception Institute of Artificial Intelligence
+        position: Senior Applied Scientist · EnergyAI (ADNOC)
+        location: Abu Dhabi, UAE
+        summary:
+        highlights:
+          - Led design and development of advanced RAG systems for upstream oil & gas operations, handling structured and unstructured data to deliver context-aware responses
+          - Optimized RAG pipeline using Azure Document Intelligence for PDF parsing and dynamic semantic chunking, minimising context loss
+          - "Fine-tuned Meta's LLaMA 70B using PEFT and full fine-tuning; performed LoRA fine-tuning on Qwen3-Embedding-8B with model merging (arXiv:2601.04720) for superior domain-specific retrieval"
+          - Built end-to-end evaluation framework auditing all RAG stages (OCR, chunking, retrieval accuracy, generation fidelity) for systematic performance tracking
+          - Benchmarked state-of-the-art and open-source LLMs and embedding models on oil & gas domain data
+          - Developed a Chatbot Arena-style frontend for direct LLM comparison and executed load/stress testing for production deployment
 
       - company: Boston Consulting Group
         position: Data Scientist Intern
