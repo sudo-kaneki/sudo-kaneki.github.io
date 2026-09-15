@@ -14,9 +14,9 @@
     <div class="cv-entry__head">
       {% case kind %}
         {% when 'experience' %}
-          <span class="cv-entry__title">{{ entry.position }} · {{ entry.company }}</span>
+          <span class="cv-entry__title">{{ entry.position }}</span>
         {% when 'education' %}
-          <span class="cv-entry__title">{{ entry.degree }}, {{ entry.area }} · {{ entry.institution }}</span>
+          <span class="cv-entry__title">{{ entry.degree }}, {{ entry.area }}</span>
         {% when 'publications' %}
           <span class="cv-entry__title">
             {% if entry.url %}
@@ -39,6 +39,24 @@
       {% endif %}
     </div>
 
+    {% comment %}
+      Employer / institution goes on its own muted line under the bold role,
+      mirroring the homepage timeline — rather than chained into the title with
+      " · ", which reads long and repeats the company when one role spans two
+      project entries. Location rides on the same line.
+    {% endcomment %}
+    {% if kind == 'experience' %}
+      <p class="cv-entry__meta">
+        {{ entry.company -}}
+        {%- if entry.location %} · {{ entry.location }}{% endif %}
+      </p>
+    {% elsif kind == 'education' %}
+      <p class="cv-entry__meta">
+        {{ entry.institution -}}
+        {%- if entry.location %} · {{ entry.location }}{% endif %}
+      </p>
+    {% endif %}
+
     {% if kind == 'publications' and entry.authors %}
       <p class="cv-entry__meta">{{ entry.authors | join: ', ' | markdownify | remove: '<p>' | remove: '</p>' }}</p>
     {% endif %}
@@ -46,43 +64,16 @@
     {% if entry.journal %}
       <p class="cv-entry__meta">{{ entry.journal }}</p>
     {% endif %}
-    {% if entry.location %}
-      <p class="cv-entry__meta">{{ entry.location }}</p>
-    {% endif %}
     {% if entry.details %}
       <p>{{ entry.details | markdownify | remove: '<p>' | remove: '</p>' }}</p>
     {% endif %}
 
-    {% comment %}
-      Highlights may include project sub-headers: a highlight that is ENTIRELY
-      bold (**...**) renders as a <p class="cv-subhead">, and the bullets after
-      it group under it. Anything else is a normal bullet. Detection: markdownify
-      the highlight, strip the wrapping <p>, and check it both starts with
-      <strong> and ends with </strong> — i.e. the bold spans the whole line.
-      We open and close <ul> around runs of bullets so a header can sit between
-      two lists.
-    {% endcomment %}
     {% if entry.highlights %}
-      {% assign in_list = false %}
-      {% for h in entry.highlights %}
-        {% assign body = h | markdownify | remove: '<p>' | remove: '</p>' | strip %}
-        {% assign lead = body | slice: 0, 8 %}
-        {% assign tail = body | slice: -9, 9 %}
-        {% if lead == '<strong>' and tail == '</strong>' %}
-          {% if in_list %}
-            </ul>
-            {% assign in_list = false -%}
-          {%- endif %}
-          <p class="cv-subhead">{{ body }}</p>
-        {% else %}
-          {% unless in_list %}
-            <ul>
-              {% assign in_list = true -%}
-          {%- endunless %}
-          <li>{{ body }}</li>
-        {% endif %}
-      {% endfor %}
-      {% if in_list %}</ul>{% endif %}
+      <ul>
+        {% for h in entry.highlights %}
+          <li>{{ h | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+        {% endfor %}
+      </ul>
     {% endif %}
   </div>
 {% endfor %}

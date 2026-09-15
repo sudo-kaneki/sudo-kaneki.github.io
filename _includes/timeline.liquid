@@ -29,15 +29,29 @@
 {% endfor %}
 {% assign keys = keys | sort | reverse %}
 
+{% comment %}
+  One role can span several CV entries (e.g. two projects under one employer,
+  each its own entry so the PDF gets a flush-left project header). The timeline
+  is a career overview, so it shows one row per company: we track companies
+  already rendered and skip repeats. The title is the position up to the first
+  " · ", dropping the project suffix so the row reads "Senior Applied Scientist"
+  rather than "… · EnergyAI (ADNOC)".
+{% endcomment %}
+{% assign seen_companies = '' | split: '' %}
+
 <ol class="timeline">
   {% for key in keys %}
     {% assign idx = key | split: ':::' | last | plus: 0 %}
     {% assign item = merged[idx] %}
+    {% if item.company %}
+      {% if seen_companies contains item.company %}{% continue %}{% endif %}
+      {% assign seen_companies = seen_companies | push: item.company %}
+    {% endif %}
     <li class="timeline__item">
       <span class="timeline__date">{{ item.start_date | slice: 0, 4 }}</span>
       <div class="timeline__body">
         {% if item.company %}
-          <span class="timeline__title">{{ item.position }}</span>
+          <span class="timeline__title">{{ item.position | split: ' · ' | first }}</span>
           <span class="timeline__org">{{ item.company }}</span>
         {% else %}
           <span class="timeline__title">{{ item.degree }}, {{ item.area }}</span>
