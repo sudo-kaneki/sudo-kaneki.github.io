@@ -5,7 +5,7 @@
 # Do not point this at a hand-uploaded PDF — it will silently go stale.
 cv_pdf: /assets/rendercv/rendercv_output/Writabrata_Bhattacharya_CV.pdf
 email: cmi.writabrata.10@gmail.com # personal
-email_work: writabrata.bhattacha@inceptionai.ai # work
+email_work: writabrata.bhattacha@inception42.ai # work
 phone: "+971 54 521 5572"
 github_username: sudo-kaneki
 linkedin_username: writabrata-bhattacharya-2b05b715a
