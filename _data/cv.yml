@@ -9,9 +9,9 @@
 # unpadded and year-only dates, but RenderCV's schema is stricter than we are.
 cv:
   name: Writabrata Bhattacharya
-  headline: Applied Scientist | LLMs · Speech AI · MLOps · World Models
+  headline: Senior Applied Scientist | GenAI · LLMs · Speech AI · MLOps · Time-Series Forecasting
   location: Abu Dhabi, United Arab Emirates
-  email: writabrata.bhattacha@inceptionai.ai
+  email: cmi.writabrata.10@gmail.com
   photo:
   phone: tel:+971-54-521-5572
   website:
@@ -23,10 +23,33 @@ cv:
 
   sections:
     experience:
+      # Two projects under one Inception role, modelled as two entries (project
+      # in the position line) rather than sub-headers inside one entry's
+      # bullets, because RenderCV bullets every highlight — the only way to a
+      # flush-left, un-bulleted project header in the PDF is a real entry.
+      #
+      # Only the FIRST (MRG) entry carries the dates; the second is the same
+      # period, shown once. The timeline derives "2024" from the dated entry,
+      # so if these are reordered the first one must keep start_date.
+      # _includes/timeline.liquid dedupes both back to a single
+      # "Senior Applied Scientist · Inception" homepage row.
       - company: Inception Institute of Artificial Intelligence
-        position: Applied Scientist
+        position: Senior Applied Scientist · Machine-Readable Government (DGE Abu Dhabi)
         start_date: 2024-07
         end_date: present
+        location: Abu Dhabi, UAE
+        summary:
+        highlights:
+          - "Built a production LLM compliance-automation platform for government product-registration review, turning policy PDFs into machine-readable policy graphs and automating case-by-case compliance assessments"
+          - "Architected a 4-stage multi-agent workflow (retrieval → taxonomy → compliance → decision) on the OpenAI Agents SDK, adjudicating cases with sandboxed, tool-using agents and rule-guided decisions"
+          - "Engineered hybrid retrieval — OpenAI Vector Store semantic search for recall, local policy-graph validation for precision — for deterministic, cross-referenced policy expansion per case"
+          - "Built a PDF → policy-graph extraction pipeline with 3-stage LLM validation, preserving clause locators and resolving cross-policy replaces / cancels / amends links for auditable checks"
+          - "Developed an evaluation framework across retrieval, compliance, decision, and graph accuracy, run through a containerized, sharded, resumable harness, with Langfuse + OpenTelemetry observability"
+          - "Deployed on Azure Kubernetes with Terraform IaC and Service Bus–throttled workers; secured with Entra ID (OAuth2 + PKCE), Postgres row-level multi-tenancy, and a Ruff / pytest / Checkov CI/CD gate"
+
+      # No dates here: same role and period as the entry above, shown once.
+      - company: Inception Institute of Artificial Intelligence
+        position: Senior Applied Scientist · EnergyAI (ADNOC)
         location: Abu Dhabi, UAE
         summary:
         highlights:
@@ -52,14 +75,14 @@ cv:
     education:
       - institution: Indian Institute of Technology Kharagpur
         area: Business Analytics
-        degree: PG Diploma
+        degree: PGDBA
         start_date: 2022-08
         end_date: 2024-05
         location: Kharagpur, India
         summary:
         highlights:
           - "Relevant Coursework: Statistical Learning, Deep Learning, Bayesian Inference, Categorical Data Analysis"
-          - Editor-in-Chief of the PGDBA Annual AI and Analytics Magazine (AINA 4.0), leading a team of 6
+          - Graduated in the top 10% of the cohort
 
       - institution: Chennai Mathematical Institute
         area: Pure Mathematics
@@ -151,7 +174,7 @@ cv:
         details: "LLMs, RAG, Fine-tuning (LoRA/PEFT), TTS, STT, NLP, Embeddings, Transformers, Reinforcement Learning"
 
       - label: MLOps & Engineering
-        details: "Docker, Kubernetes, FastAPI, Azure, Databricks, vLLM, Gradio, Load Testing, Production Deployment"
+        details: "Docker, Kubernetes, FastAPI, Azure, Databricks, vLLM, Gradio, OpenTelemetry, Postgres/SQLModel, Load Testing, Production Deployment"
 
       - label: Statistics & Mathematics
         details: "Time Series, Stochastic Processes, Bayesian Inference, Measure Theory, Statistical Learning"
@@ -160,7 +183,7 @@ cv:
         details: "Python, R, Haskell, C++, JavaScript"
 
       - label: Frameworks & Tools
-        details: "PyTorch, LangChain, Hugging Face, verl, vLLM"
+        details: "PyTorch, LangChain, Hugging Face, OpenAI Agents SDK, Langfuse, verl, vLLM"
 
     languages:
       - label: English

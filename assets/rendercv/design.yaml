@@ -10,3 +10,8 @@ design:
       # Default is "national", which renders +971 54 521 5572 as "054 521 5572"
       # — it drops the country code, which is wrong on a CV read abroad.
       phone_number_format: international
+  entries:
+    # The degree column defaults to 1cm, which fits "MSc"/"BSc" but not
+    # "PGDBA" — the 5-char degree overran the column and collided with the
+    # institution name. Widened so it clears with a gap.
+    degree_width: 2cm
