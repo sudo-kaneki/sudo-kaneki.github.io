@@ -9,7 +9,7 @@
 # unpadded and year-only dates, but RenderCV's schema is stricter than we are.
 cv:
   name: Writabrata Bhattacharya
-  headline: Applied Scientist | LLMs · Speech AI · MLOps · World Models
+  headline: Senior Applied Scientist | GenAI · LLMs · Speech AI · MLOps · Time-Series Forecasting
   location: Abu Dhabi, United Arab Emirates
   email: writabrata.bhattacha@inceptionai.ai
   photo:
@@ -24,18 +24,33 @@ cv:
   sections:
     experience:
       - company: Inception Institute of Artificial Intelligence
-        position: Applied Scientist
+        position: Senior Applied Scientist
         start_date: 2024-07
         end_date: present
         location: Abu Dhabi, UAE
         summary:
+        # A highlight that is ENTIRELY bold (**...** with nothing else) is
+        # treated as a project sub-header by _includes/cv-section.liquid; the
+        # bullets after it belong to that project. RenderCV renders it as a
+        # bold bullet, which reads as a header in the PDF too.
         highlights:
+          - "**EnergyAI · ADNOC**"
           - Led design and development of advanced RAG systems for upstream oil & gas operations, handling structured and unstructured data to deliver context-aware responses
           - Optimized RAG pipeline using Azure Document Intelligence for PDF parsing and dynamic semantic chunking, minimising context loss
           - "Fine-tuned Meta's LLaMA 70B using PEFT and full fine-tuning; performed LoRA fine-tuning on Qwen3-Embedding-8B with model merging (arXiv:2601.04720) for superior domain-specific retrieval"
           - Built end-to-end evaluation framework auditing all RAG stages (OCR, chunking, retrieval accuracy, generation fidelity) for systematic performance tracking
           - Benchmarked state-of-the-art and open-source LLMs and embedding models on oil & gas domain data
           - Developed a Chatbot Arena-style frontend for direct LLM comparison and executed load/stress testing for production deployment
+
+          - "**Machine-Readable Government (MRG) · DGE Abu Dhabi**"
+          - "Designed and built a production LLM compliance-automation platform for government product-registration review, converting policy PDFs into machine-readable policy graphs and running automated compliance assessments over reviewable case workflows"
+          - "Architected a 4-stage multi-agent workflow (retrieval → taxonomy → compliance → decision) on the OpenAI Agents SDK, orchestrating end-to-end case adjudication with sandboxed, multi-turn tool-using agents and rule-guided decisions"
+          - "Engineered a hybrid retrieval pipeline pairing OpenAI Vector Store semantic search (high recall) with local policy-graph validation (high precision), enabling deterministic, cross-referenced policy applicability expansion per case"
+          - "Built a PDF → Markdown → policy-graph extraction pipeline with 3-stage LLM validation, preserving source-clause locators and resolving cross-policy replaces / cancels / amends relationships for auditable compliance checks"
+          - "Developed a comprehensive evaluation framework — retrieval, compliance, decision, graph-accuracy, and variance evals with LLM-based graders and exact-match validators — run through a containerized, sharded, resumable harness against golden datasets"
+          - "Led LLM observability with Langfuse (content-rich traces, prompt versioning) alongside an OpenTelemetry structural-telemetry stream to Azure App Insights / SigNoz, with automatic secret scrubbing and environment-gated content capture"
+          - "Deployed on Azure Kubernetes Service with Terraform IaC and Azure Service Bus–throttled worker dispatch, containerizing FastAPI / React services and achieving multi-tenant isolation via Postgres row-level security and workload identity"
+          - "Built the CI/CD pipeline (GitHub Actions + Azure Pipelines) enforcing Ruff / pytest, ESLint / Vitest, and Terraform / Checkov gates behind branch protection, and secured the platform with Microsoft Entra ID (OAuth2 + PKCE) browser auth, app-only bearer tokens for service clients, and CSRF-protected signed sessions"
 
       - company: Boston Consulting Group
         position: Data Scientist Intern

@@ -107,6 +107,16 @@
   margin-bottom: var(--sp-12);
 }
 
+/* Project sub-header within a role (e.g. "EnergyAI · ADNOC"). Sits below the
+   green section heading and above the muted body: display font, --fg, so the
+   hierarchy reads green section > light-bold project > body. */
+.cv-subhead {
+  font-family: var(--font-display);
+  font-weight: var(--fw-display);
+  color: var(--fg);
+  margin: var(--sp-6) 0 var(--sp-2);
+}
+
 .cv-entry__head {
   display: flex;
   justify-content: space-between;

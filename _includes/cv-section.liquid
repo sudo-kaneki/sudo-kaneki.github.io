@@ -53,12 +53,36 @@
       <p>{{ entry.details | markdownify | remove: '<p>' | remove: '</p>' }}</p>
     {% endif %}
 
+    {% comment %}
+      Highlights may include project sub-headers: a highlight that is ENTIRELY
+      bold (**...**) renders as a <p class="cv-subhead">, and the bullets after
+      it group under it. Anything else is a normal bullet. Detection: markdownify
+      the highlight, strip the wrapping <p>, and check it both starts with
+      <strong> and ends with </strong> — i.e. the bold spans the whole line.
+      We open and close <ul> around runs of bullets so a header can sit between
+      two lists.
+    {% endcomment %}
     {% if entry.highlights %}
-      <ul>
-        {% for h in entry.highlights %}
-          <li>{{ h | markdownify | remove: '<p>' | remove: '</p>' }}</li>
-        {% endfor %}
-      </ul>
+      {% assign in_list = false %}
+      {% for h in entry.highlights %}
+        {% assign body = h | markdownify | remove: '<p>' | remove: '</p>' | strip %}
+        {% assign lead = body | slice: 0, 8 %}
+        {% assign tail = body | slice: -9, 9 %}
+        {% if lead == '<strong>' and tail == '</strong>' %}
+          {% if in_list %}
+            </ul>
+            {% assign in_list = false -%}
+          {%- endif %}
+          <p class="cv-subhead">{{ body }}</p>
+        {% else %}
+          {% unless in_list %}
+            <ul>
+              {% assign in_list = true -%}
+          {%- endunless %}
+          <li>{{ body }}</li>
+        {% endif %}
+      {% endfor %}
+      {% if in_list %}</ul>{% endif %}
     {% endif %}
   </div>
 {% endfor %}
