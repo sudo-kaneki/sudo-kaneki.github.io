@@ -23,42 +23,45 @@ cv:
 
   sections:
     experience:
-      # Two projects under one Inception role, modelled as two entries (project
-      # in the position line) rather than sub-headers inside one entry's
-      # bullets, because RenderCV bullets every highlight — the only way to a
-      # flush-left, un-bulleted project header in the PDF is a real entry.
+      # One Inception role shown as its real promotion: Applied Scientist on
+      # EnergyAI (2024-07 → 2026-04) → Senior Applied Scientist on Machine-
+      # Readable Government (2026-04 → present). Each title period is its own
+      # entry — RenderCV bullets every highlight, so a real entry is the only
+      # way to a flush-left header, and two entries let the promotion read
+      # plainly. The homepage timeline (_includes/timeline.liquid) dedupes by
+      # company AND title, so both roles show as a progression instead of
+      # collapsing into one row.
       #
-      # Only the FIRST (MRG) entry carries the dates; the second is the same
-      # period, shown once. The timeline derives "2024" from the dated entry,
-      # so if these are reordered the first one must keep start_date.
-      # _includes/timeline.liquid dedupes both back to a single
-      # "Senior Applied Scientist · Inception" homepage row.
+      # Keyword bolding is deliberate: 2–3 load-bearing terms per bullet so a
+      # recruiter (and an ATS-skimming human) gets the gist from the bold words
+      # alone. Bolding is markdown, so it renders on the /cv/ page and the PDF.
       - company: Inception Institute of Artificial Intelligence
         position: Senior Applied Scientist · Machine-Readable Government (DGE Abu Dhabi)
-        start_date: 2024-07
+        start_date: 2026-04
         end_date: present
         location: Abu Dhabi, UAE
         summary:
         highlights:
-          - "Built a production LLM compliance-automation platform for government product-registration review, turning policy PDFs into machine-readable policy graphs and automating case-by-case compliance assessments"
-          - "Architected a 4-stage multi-agent workflow (retrieval → taxonomy → compliance → decision) on the OpenAI Agents SDK, adjudicating cases with sandboxed, tool-using agents and rule-guided decisions"
-          - "Engineered hybrid retrieval — OpenAI Vector Store semantic search for recall, local policy-graph validation for precision — for deterministic, cross-referenced policy expansion per case"
-          - "Built a PDF → policy-graph extraction pipeline with 3-stage LLM validation, preserving clause locators and resolving cross-policy replaces / cancels / amends links for auditable checks"
-          - "Developed an evaluation framework across retrieval, compliance, decision, and graph accuracy, run through a containerized, sharded, resumable harness, with Langfuse + OpenTelemetry observability"
-          - "Deployed on Azure Kubernetes with Terraform IaC and Service Bus–throttled workers; secured with Entra ID (OAuth2 + PKCE), Postgres row-level multi-tenancy, and a Ruff / pytest / Checkov CI/CD gate"
+          - "Built a production **LLM compliance-automation platform** for government product-registration review, turning **policy PDFs into machine-readable policy graphs** and automating case-by-case compliance assessments"
+          - "Architected a **4-stage multi-agent workflow** (retrieval → taxonomy → compliance → decision) on the **OpenAI Agents SDK**, adjudicating cases with **sandboxed, tool-using agents** and rule-guided decisions"
+          - "Engineered **hybrid retrieval** — **OpenAI Vector Store** semantic search for recall, local **policy-graph validation** for precision — for deterministic, cross-referenced policy expansion per case"
+          - "Built a **PDF → policy-graph extraction pipeline** with **3-stage LLM validation**, preserving clause locators and resolving cross-policy replaces / cancels / amends links for auditable checks"
+          - "Developed an **evaluation framework** across retrieval, compliance, decision, and graph accuracy, run through a **containerized, sharded, resumable harness**, with **Langfuse + OpenTelemetry** observability"
+          - "Deployed on **Azure Kubernetes** with **Terraform IaC** and Service Bus–throttled workers; secured with **Entra ID (OAuth2 + PKCE)**, **Postgres row-level multi-tenancy**, and a **Ruff / pytest / Checkov** CI/CD gate"
 
-      # No dates here: same role and period as the entry above, shown once.
       - company: Inception Institute of Artificial Intelligence
-        position: Senior Applied Scientist · EnergyAI (ADNOC)
+        position: Applied Scientist · EnergyAI (ADNOC)
+        start_date: 2024-07
+        end_date: 2026-04
         location: Abu Dhabi, UAE
         summary:
         highlights:
-          - Led design and development of advanced RAG systems for upstream oil & gas operations, handling structured and unstructured data to deliver context-aware responses
-          - Optimized RAG pipeline using Azure Document Intelligence for PDF parsing and dynamic semantic chunking, minimising context loss
-          - "Fine-tuned Meta's LLaMA 70B using PEFT and full fine-tuning; performed LoRA fine-tuning on Qwen3-Embedding-8B with model merging (arXiv:2601.04720) for superior domain-specific retrieval"
-          - Built end-to-end evaluation framework auditing all RAG stages (OCR, chunking, retrieval accuracy, generation fidelity) for systematic performance tracking
-          - Benchmarked state-of-the-art and open-source LLMs and embedding models on oil & gas domain data
-          - Developed a Chatbot Arena-style frontend for direct LLM comparison and executed load/stress testing for production deployment
+          - "Led design and development of advanced **RAG systems** for upstream **oil & gas** operations, handling structured and unstructured data to deliver context-aware responses"
+          - "Optimized the RAG pipeline with **Azure Document Intelligence** for PDF parsing and **dynamic semantic chunking**, minimising context loss"
+          - "**Fine-tuned Meta's LLaMA 70B** (PEFT and full fine-tuning) and **LoRA-tuned Qwen3-Embedding-8B** with **model merging** (arXiv:2601.04720) for superior domain-specific retrieval"
+          - "Built an end-to-end **evaluation framework** auditing every RAG stage — OCR, chunking, retrieval accuracy, generation fidelity — for systematic performance tracking"
+          - "**Benchmarked** state-of-the-art and open-source **LLMs and embedding models** on oil & gas domain data"
+          - "Built a **Chatbot Arena-style evaluation frontend** for direct LLM comparison and ran **load / stress testing** for production deployment"
 
       - company: Boston Consulting Group
         position: Data Scientist Intern
@@ -67,10 +70,28 @@ cv:
         location: Mumbai, India
         summary:
         highlights:
-          - Increased call transcription accuracy by analysing audio to identify language and tailor transcription strategies
-          - Developed a complete audio processing pipeline using VAD for noise reduction, Mel-Spectrogram features, and a TDNN-based language identification model
-          - Fine-tuned the Whisper model with hyper-parameter tuning for Indian languages, significantly improving transcription fidelity
-          - Engineered a QA module to flag recurring lines and timestamp discrepancies; leveraged GPT-3.5 and XLM-RoBERTa for business category classification
+          - "Increased call **transcription accuracy** by analysing audio to identify language and tailor transcription strategies"
+          - "Built a complete **audio-processing pipeline** — **VAD** noise reduction, **Mel-Spectrogram** features, and a **TDNN language-identification** model"
+          - "**Fine-tuned Whisper** with hyper-parameter tuning for Indian languages, significantly improving transcription fidelity"
+          - "Engineered a **QA module** to flag recurring lines and timestamp discrepancies; used **GPT-3.5 and XLM-RoBERTa** for business-category classification"
+
+    # Skills sits directly below Experience so the tech keywords land on page 1,
+    # where a recruiter skims — not at the foot of the CV.
+    skills:
+      - label: Machine Learning & AI
+        details: "LLMs, RAG, Fine-tuning (LoRA/PEFT), TTS, STT, NLP, Embeddings, Transformers, Reinforcement Learning"
+
+      - label: MLOps & Engineering
+        details: "Docker, Kubernetes, FastAPI, Azure, Databricks, vLLM, Gradio, OpenTelemetry, Postgres/SQLModel, Load Testing, Production Deployment"
+
+      - label: Statistics & Mathematics
+        details: "Time Series, Stochastic Processes, Bayesian Inference, Measure Theory, Statistical Learning"
+
+      - label: Programming
+        details: "Python, R, Haskell, C++, JavaScript"
+
+      - label: Frameworks & Tools
+        details: "PyTorch, LangChain, Hugging Face, OpenAI Agents SDK, Langfuse, verl, vLLM"
 
     education:
       - institution: Indian Institute of Technology Kharagpur
@@ -82,7 +103,7 @@ cv:
         summary:
         highlights:
           - "Relevant Coursework: Statistical Learning, Deep Learning, Bayesian Inference, Categorical Data Analysis"
-          - Graduated in the top 10% of the cohort
+          - Graduated in the **top 10%** of the cohort
 
       - institution: Chennai Mathematical Institute
         area: Pure Mathematics
@@ -93,7 +114,7 @@ cv:
         summary:
         highlights:
           - "Relevant Coursework: Measure Theory, Stochastic Process, Operator Theory, Ergodic Theory"
-          - "Thesis: Angle & Distance Estimates and Kazhdan Constants"
+          - "**Thesis:** Angle & Distance Estimates and Kazhdan Constants"
           - Full academic scholarship and tuition fee waiver
 
       - institution: Chennai Mathematical Institute
@@ -169,22 +190,6 @@ cv:
         details: "Mentored Mathematics and Physics Olympiad aspirants for four years (2017–2021)."
         date: 2017
 
-    skills:
-      - label: Machine Learning & AI
-        details: "LLMs, RAG, Fine-tuning (LoRA/PEFT), TTS, STT, NLP, Embeddings, Transformers, Reinforcement Learning"
-
-      - label: MLOps & Engineering
-        details: "Docker, Kubernetes, FastAPI, Azure, Databricks, vLLM, Gradio, OpenTelemetry, Postgres/SQLModel, Load Testing, Production Deployment"
-
-      - label: Statistics & Mathematics
-        details: "Time Series, Stochastic Processes, Bayesian Inference, Measure Theory, Statistical Learning"
-
-      - label: Programming
-        details: "Python, R, Haskell, C++, JavaScript"
-
-      - label: Frameworks & Tools
-        details: "PyTorch, LangChain, Hugging Face, OpenAI Agents SDK, Langfuse, verl, vLLM"
-
     languages:
       - label: English
         details: Fluent
@@ -201,6 +206,3 @@ cv:
     interests:
       - label: Research
         details: "World Models, Reinforcement Learning, LLMs, Speech AI, Quantitative Finance, Game Development"
-
-      - label: Hobbies
-        details: "Football, Basketball, Badminton, Padel, Karting, Guitar"

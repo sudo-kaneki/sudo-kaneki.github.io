@@ -30,28 +30,32 @@
 {% assign keys = keys | sort | reverse %}
 
 {% comment %}
-  One role can span several CV entries (e.g. two projects under one employer,
-  each its own entry so the PDF gets a flush-left project header). The timeline
-  is a career overview, so it shows one row per company: we track companies
-  already rendered and skip repeats. The title is the position up to the first
-  " · ", dropping the project suffix so the row reads "Senior Applied Scientist"
-  rather than "… · EnergyAI (ADNOC)".
+  The title is the position up to the first " · ", dropping the project suffix
+  so a row reads "Senior Applied Scientist" rather than "… · EnergyAI (ADNOC)".
+
+  A single project-entry should not add a second row, but a genuine promotion
+  should. So we dedupe on company + that stripped title: two entries that are
+  the same role split by project collapse to one row, while Applied Scientist
+  and Senior Applied Scientist at the same company both show — the promotion
+  reads as a progression on the timeline.
 {% endcomment %}
-{% assign seen_companies = '' | split: '' %}
+{% assign seen_roles = '' | split: '' %}
 
 <ol class="timeline">
   {% for key in keys %}
     {% assign idx = key | split: ':::' | last | plus: 0 %}
     {% assign item = merged[idx] %}
+    {% assign role = item.position | split: ' · ' | first %}
     {% if item.company %}
-      {% if seen_companies contains item.company %}{% continue %}{% endif %}
-      {% assign seen_companies = seen_companies | push: item.company %}
+      {% assign role_key = item.company | append: '::' | append: role %}
+      {% if seen_roles contains role_key %}{% continue %}{% endif %}
+      {% assign seen_roles = seen_roles | push: role_key %}
     {% endif %}
     <li class="timeline__item">
       <span class="timeline__date">{{ item.start_date | slice: 0, 4 }}</span>
       <div class="timeline__body">
         {% if item.company %}
-          <span class="timeline__title">{{ item.position | split: ' · ' | first }}</span>
+          <span class="timeline__title">{{ role }}</span>
           <span class="timeline__org">{{ item.company }}</span>
         {% else %}
           <span class="timeline__title">{{ item.degree }}, {{ item.area }}</span>
