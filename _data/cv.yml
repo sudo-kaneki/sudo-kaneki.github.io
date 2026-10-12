@@ -9,7 +9,7 @@
 # unpadded and year-only dates, but RenderCV's schema is stricter than we are.
 cv:
   name: Writabrata Bhattacharya
-  headline: Senior Applied Scientist | GenAI · LLMs · Speech AI · MLOps · Time-Series Forecasting
+  headline: Applied Scientist | GenAI · LLMs · Speech AI · MLOps · Time-Series Forecasting
   location: Abu Dhabi, United Arab Emirates
   email: cmi.writabrata.10@gmail.com
   photo:
@@ -23,21 +23,21 @@ cv:
 
   sections:
     experience:
-      # One Inception role shown as its real promotion: Applied Scientist on
-      # EnergyAI (2024-07 → 2026-04) → Senior Applied Scientist on Machine-
-      # Readable Government (2026-04 → present). Each title period is its own
-      # entry — RenderCV bullets every highlight, so a real entry is the only
-      # way to a flush-left header, and two entries let the promotion read
-      # plainly. The homepage timeline (_includes/timeline.liquid) dedupes by
-      # company AND title, so both roles show as a progression instead of
-      # collapsing into one row.
+      # One Applied Scientist role at Inception (Jul 2024 – present), covering two
+      # projects shown as sub-sections: Machine-Readable Government (DGE) and
+      # EnergyAI (ADNOC). Each is its own entry with the project in the position
+      # line — RenderCV bullets every highlight, so a real entry is the only way
+      # to a flush-left, un-bulleted project header. Only the first entry carries
+      # the role dates; the second is the same role and period, shown once. The
+      # homepage timeline (_includes/timeline.liquid) dedupes by company + title,
+      # so both collapse to a single "Applied Scientist · Inception" row.
       #
       # Keyword bolding is deliberate: 2–3 load-bearing terms per bullet so a
       # recruiter (and an ATS-skimming human) gets the gist from the bold words
       # alone. Bolding is markdown, so it renders on the /cv/ page and the PDF.
       - company: Inception Institute of Artificial Intelligence
-        position: Senior Applied Scientist · Machine-Readable Government (DGE Abu Dhabi)
-        start_date: 2026-04
+        position: Applied Scientist · Machine-Readable Government (DGE Abu Dhabi)
+        start_date: 2024-07
         end_date: present
         location: Abu Dhabi, UAE
         summary:
@@ -49,10 +49,9 @@ cv:
           - "Developed an **evaluation framework** across retrieval, compliance, decision, and graph accuracy, run through a **containerized, sharded, resumable harness**, with **Langfuse + OpenTelemetry** observability"
           - "Deployed on **Azure Kubernetes** with **Terraform IaC** and Service Bus–throttled workers; secured with **Entra ID (OAuth2 + PKCE)**, **Postgres row-level multi-tenancy**, and a **Ruff / pytest / Checkov** CI/CD gate"
 
+      # No dates: same Applied Scientist role and period as the entry above.
       - company: Inception Institute of Artificial Intelligence
         position: Applied Scientist · EnergyAI (ADNOC)
-        start_date: 2024-07
-        end_date: 2026-04
         location: Abu Dhabi, UAE
         summary:
         highlights:
