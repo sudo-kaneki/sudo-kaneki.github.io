@@ -322,10 +322,92 @@
   text-align: center;
 }
 
-.figure-pending figcaption {
+.figure-pending figcaption,
+.diagram figcaption {
   color: var(--fg-muted);
   font-size: var(--fs-sm);
   margin-top: var(--sp-2);
+}
+
+/* ---- Book diagrams: inline SVG, styled only through these classes ----
+   Each <svg> sets --dg-w to its viewBox width (a unitless number), so it
+   can stay legible on phones by scrolling instead of shrinking. Colours all
+   come from the theme, so diagrams follow dark and light automatically. */
+.diagram {
+  margin: var(--sp-6) 0;
+}
+
+.diagram__scroll {
+  overflow-x: auto;
+}
+
+.diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: calc(var(--dg-w) * var(--dg-min-scale) * 1px);
+  font-family: var(--font-body);
+}
+
+.dg-box {
+  fill: var(--surface);
+  stroke: var(--fg-muted);
+  stroke-width: var(--bw);
+}
+
+.dg-shadow {
+  fill: var(--border);
+}
+
+.dg-head {
+  fill: var(--accent);
+}
+
+.dg-head-text {
+  fill: var(--accent-ink);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-display);
+}
+
+.dg-text {
+  fill: var(--fg);
+  font-size: var(--fs-sm);
+}
+
+.dg-strong {
+  fill: var(--fg);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-display);
+}
+
+.dg-sub {
+  fill: var(--fg-muted);
+  font-size: var(--fs-xs);
+}
+
+.dg-key {
+  fill: var(--accent);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-display);
+}
+
+.dg-rule {
+  stroke: var(--border);
+  stroke-width: var(--bw);
+}
+
+.dg-line {
+  fill: none;
+  stroke: var(--fg-muted);
+  stroke-width: var(--bw);
+}
+
+.dg-arrowhead {
+  fill: var(--fg-muted);
+}
+
+.dg-dot {
+  fill: var(--accent);
 }
 
 @media (min-width: t.$bp-book) {
