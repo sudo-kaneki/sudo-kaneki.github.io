@@ -1,15 +1,32 @@
 # for more options, see https://docs.rendercv.com/user_guide/yaml_input_structure/design/
+#
+# Tuned to fit the CV on two pages WITHOUT cutting content or shrinking the
+# body font (stays 10pt for readability / ATS). The space comes from tighter
+# margins and the inter-entry / section / header gaps, which RenderCV defaults
+# set generously (0.7in margins, 1.2em between entries, 0.7cm header gaps).
 design:
   theme: classic
   page:
     size: a4
     show_footer: false
     show_top_note: false
+    top_margin: 0.5in
+    bottom_margin: 0.5in
+    left_margin: 0.5in
+    right_margin: 0.5in
+  typography:
+    line_spacing: 0.5em
   header:
+    space_below_name: 0.25cm
+    space_below_headline: 0.2cm
+    space_below_connections: 0.35cm
     connections:
       # Default is "national", which renders +971 54 521 5572 as "054 521 5572"
       # — it drops the country code, which is wrong on a CV read abroad.
       phone_number_format: international
+  sections:
+    space_between_regular_entries: 0.6em
+    space_between_text_based_entries: 0.2em
   entries:
     # The degree column defaults to 1cm, which fits "MSc"/"BSc" but not
     # "PGDBA" — the 5-char degree overran the column and collided with the
