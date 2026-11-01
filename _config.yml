@@ -38,6 +38,12 @@ plugins:
 
 include: ["_pages"]
 
+# The ML interview book: one doc per chapter in _ml_interview/, read in the
+# book layout. Lives under /blog/ until it is published as a standalone book.
+collections:
+  ml_interview:
+    output: true
+
 exclude:
   - AGENTS.md
   - CLAUDE.md
@@ -64,6 +70,13 @@ defaults:
       type: "posts"
     values:
       layout: "article"
+  - scope:
+      path: ""
+      type: "ml_interview"
+    values:
+      layout: "book"
+      math: true
+      categories: ["book"]
 
 # -----------------------------------------------------------------------------
 # Minification (production only)

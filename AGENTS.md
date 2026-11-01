@@ -8,9 +8,11 @@ describe a theme and a project this repo no longer has.
 
 Four routes: `/` (`_pages/home.md`), `/cv/`, `/projects/`, `/blog/`. Plus `/404.html`.
 
-Four layouts: `base.liquid` (the shell: head, nav, main, footer) → `home.liquid`,
+Five layouts: `base.liquid` (the shell: head, nav, main, footer) → `home.liquid`,
 `listing.liquid` (content pages: cv, projects, blog index), `article.liquid`
-(blog posts).
+(blog posts), `book.liquid` (the ML interview book reader). A layout can widen
+`<main>` by setting `main_class` in its front matter (the book uses
+`wrap wrap--book`).
 
 Six includes: `site-head`, `site-nav`, `site-footer`, `timeline`, `project-card`,
 `cv-section`.
@@ -25,7 +27,8 @@ Five SCSS partials, compiled by `assets/css/site.scss`:
 | `_sass/_pages.scss`  | Page-specific layout                                               |
 | `_sass/_syntax.scss` | Code block / syntax highlighting                                   |
 
-Two JS files: `assets/js/theme-toggle.js`, `assets/js/blog-filter.js`.
+Four JS files: `assets/js/theme-toggle.js`, `assets/js/favicon-blink.js`,
+`assets/js/blog-filter.js`, `assets/js/book-toc.js`.
 
 Data: `_data/cv.yml`, `_data/socials.yml`, `_data/projects.yml`.
 
@@ -70,6 +73,29 @@ RenderCV on every push touching it.
 `cv.yml`; everything else follows.
 
 `_data/projects.yml` feeds `/projects/` and the homepage `featured` block.
+
+## The ML interview book
+
+"Cracking the ML Interview" is the `ml_interview` collection: one file per
+chapter in `_ml_interview/`, rendered by `book.liquid` with a chapter sidebar.
+It lives under `/blog/cracking-the-ml-interview/` until it is published as a
+standalone book. Do not move it to `/book/` without being asked.
+
+- Ordering comes from the `chapter` front-matter number: `0` is the preface
+  (the book's landing page and its **single** entry on `/blog/`), `1`–`15` are
+  chapters, `99` is the changelog. `permalink` is set per file.
+- Display math is kramdown `$$ … $$` on its own lines (MathJax via
+  `math: true`, set by the collection defaults).
+- Diagrams not yet redrawn are `<figure class="figure-pending">` placeholders.
+  Replace them with inline SVG that uses theme tokens (`currentColor`,
+  `var(--accent)`), never hardcoded colours.
+- "Further reading" lists that don't start at 1 are HTML `<ol start="N">`
+  because kramdown ignores list start numbers. The numbers are cited in the
+  text ("reference 39"), so keep them stable.
+- Revising from feedback: readers file issues through
+  `.github/ISSUE_TEMPLATE/book-feedback.yml` (linked, prefilled, from every
+  chapter). To apply one: edit the chapter file, bump its `updated` date, and
+  add a line to `_ml_interview/99-changelog.md`.
 
 ## Local development
 
