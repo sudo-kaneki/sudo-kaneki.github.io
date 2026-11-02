@@ -57,14 +57,28 @@ on:
       - "!FAQ.md"
       - "!INSTALL.md"
       - "!README.md"
+  # The CV workflow commits the rendered PDF with GITHUB_TOKEN, and commits made
+  # that way never trigger a push event. Without this, the site deploys before
+  # the new PDF exists and keeps serving the stale one.
+  workflow_run:
+    workflows: ["Render a CV"]
+    types: [completed]
+    branches: [main, master]
   workflow_dispatch:
 
 permissions:
   contents: write
 
+# Queue deploys per ref instead of running them in parallel, so the
+# post-render deploy always lands after the push deploy it follows.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   deploy:
     # available images: https://github.com/actions/runner-images#available-images
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
