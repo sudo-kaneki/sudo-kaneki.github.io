@@ -72,6 +72,7 @@ $bp-book: 900px;
   /* Book diagrams never shrink below this share of their drawn size;
      narrower screens scroll the diagram sideways instead. */
   --dg-min-scale: 0.8;
+  --dg-shade-opacity: 0.35; /* shaded regions inside book diagrams */
 
   /* ---- Motion ---------------------------------------------- */
   --t: 120ms ease-out;

@@ -435,6 +435,12 @@
   fill: var(--accent);
 }
 
+/* A highlighted region of a plot (e.g. "well-classified examples"). */
+.dg-shade {
+  fill: var(--border);
+  opacity: var(--dg-shade-opacity);
+}
+
 /* Ring drawn around a highlighted point (a support vector). */
 .dg-ring {
   fill: none;
