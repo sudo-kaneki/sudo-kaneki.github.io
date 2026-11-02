@@ -52,6 +52,10 @@ $bp-book: 900px;
   --bw: 1px;
   --shadow: 4px 4px 0 var(--border);
   --shadow-sm: 2px 2px 0 var(--border);
+  /* Bold in dense prose: weight alone barely shows in a monospace face,
+     so book text also gets a faint accent highlight behind it. */
+  --strong-bg: color-mix(in srgb, var(--accent) 16%, transparent);
+  --strong-pad: 0.15em;
 
   /* ---- Interaction geometry --------------------------------- */
   --press: 2px; /* hover: how far a key depresses */
