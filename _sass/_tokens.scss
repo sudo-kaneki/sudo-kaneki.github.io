@@ -69,6 +69,10 @@ $bp-book: 900px;
   --w-wide: 960px;
   --w-sidebar: 15rem; /* book contents sidebar */
   --bp-book: #{$bp-book}; /* mirrors $bp-book for assets/js/book-toc.js */
+  /* Book diagrams never shrink below this share of their drawn size;
+     narrower screens scroll the diagram sideways instead. */
+  --dg-min-scale: 0.8;
+  --dg-shade-opacity: 0.35; /* shaded regions inside book diagrams */
 
   /* ---- Motion ---------------------------------------------- */
   --t: 120ms ease-out;
