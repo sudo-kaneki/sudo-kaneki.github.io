@@ -410,6 +410,38 @@
   fill: var(--accent);
 }
 
+/* Emphasised line: a decision boundary, a threshold. */
+.dg-line-accent {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: calc(var(--bw) * 2);
+}
+
+/* A box that is an outcome (a tree leaf), filled like a table header. */
+.dg-box--accent {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+
+/* Two classes of data point: told apart by shape AND fill, never colour
+   alone. Class A is hollow, class B is solid accent. */
+.dg-pt-a {
+  fill: var(--surface);
+  stroke: var(--fg);
+  stroke-width: var(--bw);
+}
+
+.dg-pt-b {
+  fill: var(--accent);
+}
+
+/* Ring drawn around a highlighted point (a support vector). */
+.dg-ring {
+  fill: none;
+  stroke: var(--fg);
+  stroke-width: var(--bw);
+}
+
 @media (min-width: t.$bp-book) {
   .book {
     grid-template-columns: var(--w-sidebar) minmax(0, 1fr);
