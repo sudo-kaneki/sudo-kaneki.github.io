@@ -35,7 +35,7 @@ cv:
       # Keyword bolding is deliberate: 2–3 load-bearing terms per bullet so a
       # recruiter (and an ATS-skimming human) gets the gist from the bold words
       # alone. Bolding is markdown, so it renders on the /cv/ page and the PDF.
-      - company: Inception Institute of Artificial Intelligence
+      - company: Inception42
         position: Senior Applied Scientist · Machine-Readable Government (DGE Abu Dhabi)
         start_date: 2026-04
         end_date: present
@@ -49,7 +49,7 @@ cv:
           - "Developed an **evaluation framework** across retrieval, compliance, decision, and graph accuracy, run through a **containerized, sharded, resumable harness**, with **Langfuse + OpenTelemetry** observability"
           - "Deployed on **Azure Kubernetes** with **Terraform IaC** and Service Bus–throttled workers; secured with **Entra ID (OAuth2 + PKCE)**, **Postgres row-level multi-tenancy**, and a **Ruff / pytest / Checkov** CI/CD gate"
 
-      - company: Inception Institute of Artificial Intelligence
+      - company: Inception42
         position: Applied Scientist · EnergyAI (ADNOC)
         start_date: 2024-07
         end_date: 2026-04
