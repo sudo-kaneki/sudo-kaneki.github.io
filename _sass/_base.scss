@@ -99,6 +99,20 @@ table {
   width: 100%;
 }
 
+th,
+td {
+  border: var(--bw) solid var(--border);
+  padding: var(--sp-2) var(--sp-3);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--surface);
+  font-family: var(--font-display);
+  font-weight: var(--fw-display);
+}
+
 .wrap {
   max-width: var(--w-content);
   margin: 0 auto;

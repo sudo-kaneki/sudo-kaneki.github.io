@@ -164,6 +164,21 @@
   min-width: 0; /* let wide tables and code scroll inside the column */
 }
 
+.book__article strong {
+  color: var(--fg);
+  background: var(--strong-bg);
+  padding: 0 var(--strong-pad);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Headers already stand out; a highlight inside them is noise. */
+.book__article th strong,
+.book__article :is(h1, h2, h3, h4) strong {
+  background: none;
+  padding: 0;
+}
+
 .book-toc__panel {
   border: var(--bw) solid var(--border);
   background: var(--surface);
