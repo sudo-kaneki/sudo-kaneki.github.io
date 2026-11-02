@@ -20,10 +20,16 @@ filters nothing.
   </div>
 {% endif %}
 
-{% if site.posts.size > 0 %}
+{% comment %}
+The ML interview book shows as ONE entry (its preface, chapter 0), merged
+into the posts by date. Its chapters are reached from inside the reader.
+{% endcomment %}
+{% assign book = site.ml_interview | where: "chapter", 0 %}
+{% assign entries = site.posts | concat: book | sort: "date" | reverse %}
+{% if entries.size > 0 %}
 
   <ul class="post-list" id="post-list" aria-live="polite">
-    {% for post in site.posts %}
+    {% for post in entries %}
       <li class="post-list__item" data-categories="{{ post.categories | join: ',' | downcase }}">
         <span class="post-list__date">{{ post.date | date: "%Y-%m-%d" }}</span>
         <span>

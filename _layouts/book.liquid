@@ -1,0 +1,113 @@
+---
+layout: base
+main_class: wrap wrap--book
+---
+{% comment %}
+  The ML interview book reader. Chapters live in _ml_interview/ and are
+  ordered by their `chapter` number: 0 is the preface (the book's landing
+  page), 99 is the changelog. Everything here keeps the site nav and footer
+  so readers can find the rest of the site.
+{% endcomment %}
+{%- assign chapters = site.ml_interview | sort: 'chapter' -%}
+{%- assign preface = chapters | first -%}
+{%- assign repo = 'https://github.com/sudo-kaneki/sudo-kaneki.github.io' -%}
+
+{%- for doc in chapters -%}
+  {%- if doc.url == page.url -%}
+    {%- assign i = forloop.index0 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign prev_i = i | minus: 1 -%}
+{%- assign next_i = i | plus: 1 -%}
+{%- if i > 0 -%}{%- assign prev = chapters[prev_i] -%}{%- endif -%}
+{%- assign next = chapters[next_i] -%}
+
+<div class="book">
+  <nav class="book-toc" aria-label="Book contents">
+    <details class="book-toc__panel" data-book-toc>
+      <summary class="book-toc__summary">Contents</summary>
+      <p class="book-toc__title">
+        <a href="{{ preface.url | relative_url }}">{{ preface.title }}</a>
+      </p>
+      <p class="book-toc__by">
+        by {{ site.first_name }}
+        {{ site.last_name }}
+      </p>
+      <ol class="book-toc__list">
+        {%- for doc in chapters %}
+          <li class="book-toc__item">
+            <a
+              href="{{ doc.url | relative_url }}"
+              {% if doc.url == page.url %}
+                aria-current="page"
+              {% endif %}
+            >
+              {%- if doc.chapter > 0 and doc.chapter < 99 -%}
+                <span class="book-toc__num">{{ doc.chapter }}</span>
+              {%- endif -%}
+              {{ doc.short_title | default: doc.title }}
+            </a>
+            {%- if doc.url == page.url %}
+              <ol class="book-toc__sections" data-book-sections hidden></ol>
+            {%- endif %}
+          </li>
+        {%- endfor %}
+      </ol>
+    </details>
+  </nav>
+
+  <article class="book__article">
+    <header class="book__header">
+      {%- if page.chapter > 0 and page.chapter < 99 %}
+        <p class="book__kicker">Chapter {{ page.chapter }}</p>
+      {%- endif %}
+      <h1>{{ page.title }}</h1>
+      {%- if page.chapter == 0 %}
+        <p class="book__meta">
+          {{ page.date | date: '%b %-d, %Y' }} · {{ site.first_name }}
+          {{ site.last_name }}
+        </p>
+      {%- endif %}
+    </header>
+
+    {{ content }}
+
+    {%- if page.chapter == 0 %}
+      <p class="book__start">
+        <a class="btn btn--accent" href="{{ next.url | relative_url }}">Start Chapter 1 →</a>
+      </p>
+    {%- endif %}
+
+    <footer class="book__footer">
+      <nav class="book-pager" aria-label="Chapter navigation">
+        {%- if prev %}
+          <a class="btn book-pager__prev" href="{{ prev.url | relative_url }}" rel="prev"> ← {{ prev.short_title | default: prev.title }} </a>
+        {%- endif %}
+        {%- if next %}
+          <a class="btn book-pager__next" href="{{ next.url | relative_url }}" rel="next"> {{ next.short_title | default: next.title }} → </a>
+        {%- endif %}
+      </nav>
+
+      <div class="book-feedback">
+        <p class="book-feedback__updated">Last updated {{ page.updated | date: '%Y-%m-%d' }}</p>
+        <p>
+          Found a mistake, or something unclear? This book is revised from reader feedback.
+          <a
+            href="{{ repo }}/issues/new?template=book-feedback.yml&title={{ '[Ch ' | append: page.chapter | append: '] ' | url_encode }}&chapter={{ page.title | url_encode }}"
+            >Report an issue</a
+          >
+          or
+          <a href="{{ repo }}/edit/main/{{ page.path }}">suggest an edit</a>. See the
+          <a href="{{ '/blog/cracking-the-ml-interview/changelog/' | relative_url }}">changelog</a> for what changed.
+        </p>
+      </div>
+
+      <p class="book-more">
+        More from {{ site.first_name }}: <a href="{{ '/projects/' | relative_url }}">projects</a> · <a href="{{ '/cv/' | relative_url }}">cv</a> ·
+        <a href="{{ '/blog/' | relative_url }}">blog</a>
+      </p>
+    </footer>
+  </article>
+</div>
+
+<script defer src="{{ '/assets/js/book-toc.js' | relative_url }}"></script>

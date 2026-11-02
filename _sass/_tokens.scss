@@ -1,6 +1,8 @@
 /* Breakpoint. Must be a Sass variable, not a CSS custom property:
    var() is not permitted inside a @media condition. */
 $bp-sm: 640px;
+/* Book reader: sidebar + article side by side at and above this width. */
+$bp-book: 900px;
 
 /* =============================================================
    DESIGN TOKENS — the only file permitted to contain literal
@@ -65,6 +67,8 @@ $bp-sm: 640px;
   /* ---- Layout ---------------------------------------------- */
   --w-content: 720px;
   --w-wide: 960px;
+  --w-sidebar: 15rem; /* book contents sidebar */
+  --bp-book: #{$bp-book}; /* mirrors $bp-book for assets/js/book-toc.js */
 
   /* ---- Motion ---------------------------------------------- */
   --t: 120ms ease-out;
